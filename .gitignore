@@ -4,3 +4,5 @@
 *.jar
 *.war
 *.ear
+/Source/NewsFetcher/nbproject/private/
+/Source/NewsFetcher/build/
