@@ -5,9 +5,17 @@
 package newsfetcher;
 
 import java.awt.Cursor;
-import java.awt.Font;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
 
 /**
  *
@@ -21,6 +29,8 @@ public class frmMain extends javax.swing.JFrame {
     public frmMain() {
         initComponents();
     }
+    
+    DataProvider dp = null;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -52,6 +62,11 @@ public class frmMain extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("News Fetcher");
         setBackground(new java.awt.Color(255, 255, 255));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(239, 239, 239));
 
@@ -131,6 +146,11 @@ public class frmMain extends javax.swing.JFrame {
         });
 
         btnXemTinTuc.setText("Xem tin tức");
+        btnXemTinTuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXemTinTucActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -238,6 +258,31 @@ public class frmMain extends javax.swing.JFrame {
         lblThongTinPhanMem.setText("Thông tin");
     }//GEN-LAST:event_lblThongTinPhanMemMouseExited
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        dp = new DataProvider("./app.config");
+//        dp = new DataProvider("localhost", "dbNewsFetcher", 1433, true, "sa", "");
+        JOptionPane.showMessageDialog(this, dp.isConnected());
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btnXemTinTucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXemTinTucActionPerformed
+        // TODO add your handling code here:
+        try{
+        txtTest.setText(HTMLReader.getHTMLContent(new URL("http://tuoitre.vn/Van-hoa-Giai-tri")));
+        }
+        catch(Exception ex)
+        {
+            
+        }
+    }//GEN-LAST:event_btnXemTinTucActionPerformed
+
+    
+    
+    
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */

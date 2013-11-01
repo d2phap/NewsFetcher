@@ -1,0 +1,2 @@
+﻿HttpClient 4.3.1
+http://hc.apache.org/downloads.cgi

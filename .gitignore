@@ -6,3 +6,4 @@
 *.ear
 /Source/NewsFetcher/nbproject/private/
 /Source/NewsFetcher/build/
+/Source/NewsFetcher/dist/
