@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<_1241350_1241363_1241378_1241431>
+	<website>IOne</website>
+	<url>http://ione.vnexpress.net/</url>
+	<category count="5">
+		<item id="1" name="Du học" url="http://ione.vnexpress.net/tin-tuc/hoc-duong/du-hoc">
+			<link>//*[@id="ione_tinnoibat_khac"]/div/div[2]/h3/a</link>
+			<title>//*[@id="ione_tinnoibat_khac"]/div/div[2]/h3/a</title>
+			<image>//*[@id="ione_tinnoibat_khac"]/div/div[2]/div/a/img</image>
+			<date>//*[@id="ione_tinnoibat_khac"]/div/div[1]/div[1]</date>
+			<description>//*[@id="ione_tinnoibat_khac"]/div/div[2]/p</description>
+			<nextpage>//*[@id="contain"]/div[3]/div[1]/div[2]/ul/li[2]/a</nextpage>
+		</item>
+		<item id="2" name="Showbiz" url="http://ione.vnexpress.net/tin-tuc/showbiz">
+			<link>//*[@id="ione_tinnoibat_khac"]/div/div[2]/h3/a</link>
+			<title>//*[@id="ione_tinnoibat_khac"]/div/div[2]/h3/a</title>
+			<image>//*[@id="ione_tinnoibat_khac"]/div/div[2]/div/a/img</image>
+			<date>//*[@id="ione_tinnoibat_khac"]/div/div[1]/div[1]</date>
+			<description>//*[@id="ione_tinnoibat_khac"]/div/div[2]/p</description>
+			<nextpage>//*[@id="contain"]/div[3]/div[1]/div[2]/ul/li[2]/a</nextpage>
+		</item>
+		<item id="3" name="Thời trang" url="http://ione.vnexpress.net/tin-tuc/thoi-trang">
+			<link>//*[@id="ione_tinnoibat_khac"]/div/div[2]/h3/a</link>
+			<title>//*[@id="ione_tinnoibat_khac"]/div/div[2]/h3/a</title>
+			<image>//*[@id="ione_tinnoibat_khac"]/div/div[2]/div/a/img</image>
+			<date>//*[@id="ione_tinnoibat_khac"]/div/div[1]/div[1]</date>
+			<description>//*[@id="ione_tinnoibat_khac"]/div/div[2]/p</description>
+			<nextpage>//*[@id="contain"]/div[3]/div[1]/div[2]/ul/li[2]/a</nextpage>
+		</item>
+		<item id="4" name="Chiêm tinh" url="http://ione.vnexpress.net/tin-tuc/chiem-tinh">
+			<link>//*[@id="ione_tinnoibat_khac"]/div/div[2]/h3/a</link>
+			<title>//*[@id="ione_tinnoibat_khac"]/div/div[2]/h3/a</title>
+			<image>//*[@id="ione_tinnoibat_khac"]/div/div[2]/div/a/img</image>
+			<date>//*[@id="ione_tinnoibat_khac"]/div/div[1]/div[1]</date>
+			<description>//*[@id="ione_tinnoibat_khac"]/div/div[2]/p</description>
+			<nextpage>//*[@id="contain"]/div[3]/div[1]/div[2]/ul/li[2]/a</nextpage>
+		</item>
+		<item id="5" name="Giới tính" url="http://ione.vnexpress.net/tin-tuc/gioi-tinh">
+			<link>//*[@id="ione_tinnoibat_khac"]/div/div[2]/h3/a</link>
+			<title>//*[@id="ione_tinnoibat_khac"]/div/div[2]/h3/a</title>
+			<image>//*[@id="ione_tinnoibat_khac"]/div/div[2]/div/a/img</image>
+			<date>//*[@id="ione_tinnoibat_khac"]/div/div[1]/div[1]</date>
+			<description>//*[@id="ione_tinnoibat_khac"]/div/div[2]/p</description>
+			<nextpage>//*[@id="contain"]/div[3]/div[1]/div[2]/ul/li[2]/a</nextpage>
+		</item>
+	</category>
+</_1241350_1241363_1241378_1241431>

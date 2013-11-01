@@ -71,9 +71,6 @@ public class DataProvider {
             
             try {
                 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-                
-		//strConnection ="jdbc:sqlserver://localhost:1433;databaseName=dbNewsFetcher;integratedSecurity=true";
-                
                 con = DriverManager.getConnection(strConnection, "sa", "");
                 
                 _isConnected = true;

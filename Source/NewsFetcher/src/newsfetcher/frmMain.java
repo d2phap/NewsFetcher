@@ -5,17 +5,16 @@
 package newsfetcher;
 
 import java.awt.Cursor;
+import java.io.File;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
 import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import org.jdom2.JDOMException;
+import org.jdom2.input.SAXBuilder;
+import org.jdom2.*;
 
 /**
  *
@@ -135,6 +134,11 @@ public class frmMain extends javax.swing.JFrame {
         cmbChuyenMuc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnThemTrangWeb.setText("Thêm trang mới");
+        btnThemTrangWeb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemTrangWebActionPerformed(evt);
+            }
+        });
 
         btnXoaTrangWeb.setText("Xoá trang web");
 
@@ -260,21 +264,36 @@ public class frmMain extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        dp = new DataProvider("./app.config");
-//        dp = new DataProvider("localhost", "dbNewsFetcher", 1433, true, "sa", "");
-        JOptionPane.showMessageDialog(this, dp.isConnected());
+        //dp = new DataProvider("./app.config");
+        dp = new DataProvider("localhost", "dbNewsFetcher", 1433, true, "sa", "");
+        JOptionPane.showMessageDialog(this, "Kết nối CSDL: " + dp.isConnected());
     }//GEN-LAST:event_formWindowOpened
 
     private void btnXemTinTucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXemTinTucActionPerformed
         // TODO add your handling code here:
         try{
-        txtTest.setText(HTMLReader.getHTMLContent(new URL("http://tuoitre.vn/Van-hoa-Giai-tri")));
+            txtTest.setText(HTMLReader.getHTMLContent(new URL("http://tuoitre.vn/Van-hoa-Giai-tri")));
         }
         catch(Exception ex)
         {
             
         }
     }//GEN-LAST:event_btnXemTinTucActionPerformed
+
+    private void btnThemTrangWebActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemTrangWebActionPerformed
+        // TODO add your handling code here:
+        
+        JFileChooser c = new JFileChooser(".\\xml");
+        c.setFileFilter(new FileNameExtensionFilter("XML Files (*.xml)", "xml"));
+        
+        if(c.showOpenDialog(this) == JFileChooser.APPROVE_OPTION)
+        {
+            frmWebsite f = new frmWebsite(c.getSelectedFile());
+            f.setVisible(true);
+            
+        }
+        
+    }//GEN-LAST:event_btnThemTrangWebActionPerformed
 
     
     

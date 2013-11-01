@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<_1241350_1241363_1241378_1241431>
+	<website>Kênh 14</website>
+	<url>http://kenh14.vn/</url>
+	<category count="5">
+		<item id="1" name="Fashion" url="http://kenh14.vn/fashion.chn">
+			<link>//*[@id="form1"]/div[5]/div/div/div[4]/div[2]/ul/li[1]/h2/a</link>
+			<title>//*[@id="form1"]/div[5]/div/div/div[4]/div[2]/ul/li[1]/h2/a</title>
+			<image>//*[@id="form1"]/div[5]/div/div/div[4]/div[2]/ul/li[1]/a/img</image>
+			<date>//*[@id="form1"]/div[5]/div/div/div[4]/div[2]/ul/li[1]/p[1]/span</date>
+			<description>//*[@id="form1"]/div[5]/div/div/div[4]/div[2]/ul/li[1]/p[2]</description>
+			<nextpage>//*[@id="form1"]/div[5]/div/div/div[4]/div[3]/a[1]</nextpage>
+		</item>
+
+		<item id="2" name="Đời sống" url="http://kenh14.vn/doi-song.chn">
+			<link>//*[@id="form1"]/div[5]/div/div/div[2]/div[2]/div[2]/ul/li[1]/div[2]/h4/a</link>
+			<title>//*[@id="form1"]/div[5]/div/div/div[2]/div[2]/div[2]/ul/li[1]/div[2]/h4/a</title>
+			<image>//*[@id="form1"]/div[5]/div/div/div[2]/div[2]/div[2]/ul/li[1]/div[1]/a/img</image>
+			<date>//*[@id="form1"]/div[5]/div/div/div[2]/div[2]/div[2]/ul/li[1]/div[2]/div[2]</date>
+			<description>//*[@id="form1"]/div[5]/div/div/div[2]/div[2]/div[2]/ul/li[1]/div[2]/div[3]</description>
+			<nextpage>//*[@id="form1"]/div[5]/div/div/div[2]/div[2]/div[2]/div[1]/ul/li[2]/a</nextpage>
+		</item>
+		
+		<item id="3" name="Xã hội" url="http://kenh14.vn/xa-hoi.chn">
+			<link>//*[@id="form1"]/div[5]/div/div/div[2]/div[2]/div[2]/ul/li[1]/div[2]/h4/a</link>
+			<title>//*[@id="form1"]/div[5]/div/div/div[2]/div[2]/div[2]/ul/li[1]/div[2]/h4/a</title>
+			<image>//*[@id="form1"]/div[5]/div/div/div[2]/div[2]/div[2]/ul/li[1]/div[1]/a/img</image>
+			<date>//*[@id="form1"]/div[5]/div/div/div[2]/div[2]/div[2]/ul/li[1]/div[2]/div[2]</date>
+			<description>//*[@id="form1"]/div[5]/div/div/div[2]/div[2]/div[2]/ul/li[1]/div[2]/div[3]</description>
+			<nextpage>//*[@id="form1"]/div[5]/div/div/div[2]/div[2]/div[2]/div[1]/ul/li[2]/a</nextpage>
+		</item>
+		
+		<item id="4" name="Giới tính" url="http://kenh14.vn/gioi-tinh.chn">
+			<link>//*[@id="form1"]/div[5]/div/div/div[4]/div[2]/ul/li[2]/h2/a</link>
+			<title>//*[@id="form1"]/div[5]/div/div/div[4]/div[2]/ul/li[2]/h2/a</title>
+			<image>//*[@id="form1"]/div[5]/div/div/div[2]/div[2]/div[2]/ul/li[1]/div[1]/a/img</image>
+			<date>//*[@id="form1"]/div[5]/div/div/div[2]/div[2]/div[2]/ul/li[1]/div[2]/div[2]</date>
+			<description>//*[@id="form1"]/div[5]/div/div/div[2]/div[2]/div[2]/ul/li[1]/div[2]/div[3]</description>
+			<nextpage>//*[@id="form1"]/div[5]/div/div/div[2]/div[2]/div[2]/div[1]/ul/li[2]/a</nextpage>
+		</item>
+		
+		<item id="5" name="Lạ" url="http://kenh14.vn/la.chn">
+			<link>//*[@id="form1"]/div[5]/div/div/div[2]/div[1]/div[2]/ul/li[1]/div[2]/h4/a</link>
+			<title>//*[@id="form1"]/div[5]/div/div/div[2]/div[1]/div[2]/ul/li[1]/div[2]/h4/a</title>
+			<image>//*[@id="form1"]/div[5]/div/div/div[2]/div[1]/div[2]/ul/li[1]/div[1]/a/img</image>
+			<date>//*[@id="form1"]/div[5]/div/div/div[2]/div[1]/div[2]/ul/li[1]/div[2]/div[2]</date>
+			<description>//*[@id="form1"]/div[5]/div/div/div[2]/div[1]/div[2]/ul/li[1]/div[2]/div[3]</description>
+			<nextpage>//*[@id="form1"]/div[5]/div/div/div[2]/div[1]/div[2]/div[1]/ul/li[2]/a</nextpage>
+		</item>
+		
+	</category>
+</_1241350_1241363_1241378_1241431>

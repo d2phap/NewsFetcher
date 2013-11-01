@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<_1241350_1241363_1241378_1241431>
+	<website>Tuoitre</website>
+	<url>http://tuoitre.vn/</url>
+	<category count="5">
+		<item id="1" name="Chính trị xã hội" url="http://tuoitre.vn/Chinh-tri-Xa-hoi">
+			<link>//*[@id="divChannelList"]/ul/li[2]/a</link>
+			<title>//*[@id="divChannelList"]/ul/li[2]/a</title>
+			<image>//*[@id="divChannelList"]/ul/li[2]/a/img</image>
+			<date>//*[@id="divChannelList"]/ul/li[2]/div[1]</date>
+			<description>//*[@id="divChannelList"]/ul/li[2]/div[2]</description>
+			<nextpage>//*[@id="divChannelList"]/div[1]/div[1]/a[2]</nextpage>
+		</item>
+		<item id="2" name="Pháp luật" url="http://tuoitre.vn/Chinh-tri-Xa-hoi/Phap-luat">
+			<link>//*[@id="blogItemNewsDetail"]/div/div/ul/li[2]/h3/a</link>
+			<title>//*[@id="blogItemNewsDetail"]/div/div/ul/li[2]/h3/a</title>
+			<image>//*[@id="blogItemNewsDetail"]/div/div/ul/li[2]/a/img</image>
+			<date>//*[@id="blogItemNewsDetail"]/div/div/ul/li[2]/div[1]</date>
+			<description>//*[@id="blogItemNewsDetail"]/div/div/ul/li[2]/div[2]</description>
+			<nextpage>//*[@id="blogItemNewsDetail"]/div/div/div[1]/div[1]/a[2]</nextpage>
+		</item>
+		<item id="3" name="Thế giới" url="http://tuoitre.vn/The-gioi">
+			<link>//*[@id="divChannelList"]/ul/li[1]/h3/a</link>
+			<title>//*[@id="divChannelList"]/ul/li[1]/h3/a</title>
+			<image>//*[@id="divChannelList"]/ul/li[1]/a/img</image>
+			<date>//*[@id="divChannelList"]/ul/li[1]/div[1]</date>
+			<description>//*[@id="divChannelList"]/ul/li[1]/div[2]</description>
+			<nextpage>//*[@id="divChannelList"]/div[1]/div[1]/a[2]</nextpage>
+		</item>
+		<item id="4" name="Kinh tế" url="http://tuoitre.vn/Kinh-te">
+			<link>//*[@id="divChannelList"]/ul/li[1]/h3/a</link>
+			<title>//*[@id="divChannelList"]/ul/li[1]/h3/a</title>
+			<image>//*[@id="divChannelList"]/ul/li[1]/a/img</image>
+			<date>//*[@id="divChannelList"]/ul/li[1]/div[1]</date>
+			<description>//*[@id="divChannelList"]/ul/li[1]/div[2]</description>
+			<nextpage>//*[@id="divChannelList"]/div[1]/div[1]/a[2]</nextpage>
+		</item>
+		<item id="5" name="Giáo dục" url="http://tuoitre.vn/Giao-duc">
+			<link>//*[@id="divChannelList"]/ul/li[1]/h3/a</link>
+			<title>//*[@id="divChannelList"]/ul/li[1]/h3/a</title>
+			<image>//*[@id="divChannelList"]/ul/li[1]/a/img</image>
+			<date>//*[@id="divChannelList"]/ul/li[1]/div[1]</date>
+			<description>//*[@id="divChannelList"]/ul/li[1]/div[2]</description>
+			<nextpage>//*[@id="divChannelList"]/div[1]/div[1]/a[2]</nextpage>
+		</item>
+	</category>
+</_1241350_1241363_1241378_1241431>
