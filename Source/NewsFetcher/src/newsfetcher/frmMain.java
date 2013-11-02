@@ -4,17 +4,38 @@
  */
 package newsfetcher;
 
+import com.sun.xml.internal.fastinfoset.stax.factory.StAXInputFactory;
+import com.sun.xml.internal.stream.XMLInputFactoryImpl;
 import java.awt.Cursor;
-import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.StringReader;
+import java.net.MalformedURLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.stream.XMLInputFactory;
+
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpression;
+import javax.xml.xpath.XPathFactory;
+import org.jdom2.Document;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
-import org.jdom2.*;
+
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
 
 /**
  *
@@ -141,6 +162,11 @@ public class frmMain extends javax.swing.JFrame {
         });
 
         btnXoaTrangWeb.setText("Xoá trang web");
+        btnXoaTrangWeb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaTrangWebActionPerformed(evt);
+            }
+        });
 
         btnChinhSuaTrang.setText("Chỉnh sửa trang");
         btnChinhSuaTrang.addActionListener(new java.awt.event.ActionListener() {
@@ -238,6 +264,36 @@ public class frmMain extends javax.swing.JFrame {
 
     private void btnChinhSuaTrangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChinhSuaTrangActionPerformed
         // TODO add your handling code here:
+        
+        JFileChooser c = new JFileChooser(".\\xml");
+        c.setFileFilter(new FileNameExtensionFilter("XML Files (*.xml)", "xml"));
+        
+        if(c.showOpenDialog(this) == JFileChooser.APPROVE_OPTION)
+        {
+            try {
+
+                XPathFactory xpf = XPathFactory.newInstance();
+                XPath xPath = xpf.newXPath();
+            
+                InputSource doc = new InputSource(new InputStreamReader(new FileInputStream(c.getSelectedFile())));
+
+                String expression = "//_1241350_1241363_1241378_1241431/category";
+                XPathExpression xpe = xPath.compile(expression);
+                
+                NodeList nl = (NodeList) xpe.evaluate(doc, XPathConstants.NODESET);
+                xpe = xPath.compile("@count");
+
+                for (int i = 0; i < nl.getLength(); i++) {
+                    System.out.println(xpe.evaluate(nl.item(i), XPathConstants.STRING));
+                }
+
+
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+        
     }//GEN-LAST:event_btnChinhSuaTrangActionPerformed
 
     private void lblThongTinPhanMemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThongTinPhanMemMouseClicked
@@ -272,7 +328,7 @@ public class frmMain extends javax.swing.JFrame {
     private void btnXemTinTucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXemTinTucActionPerformed
         // TODO add your handling code here:
         try{
-            txtTest.setText(HTMLReader.getHTMLContent(new URL("http://tuoitre.vn/Van-hoa-Giai-tri")));
+            txtTest.setText(HTMLReader.getHTMLContent(new URL("http://www.viet-jo.com/rss/headline7.rdf")));
         }
         catch(Exception ex)
         {
@@ -294,6 +350,18 @@ public class frmMain extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btnThemTrangWebActionPerformed
+
+    private void btnXoaTrangWebActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaTrangWebActionPerformed
+        try {
+            // TODO add your handling code here:
+
+            String s = HTMLReader.abc(new URL("http://www.viet-jo.com/rss/headline7.rdf"));
+            
+        } catch (Exception ex) {
+            Logger.getLogger(frmMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_btnXoaTrangWebActionPerformed
 
     
     

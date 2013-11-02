@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-16" standalone="no"?>
+<Home>
+    <ListOfCustomers type="Regular" count="939">
+        <Customer>
+			<CustName>xyz</CustName>
+        </Customer>
+        <Customer>
+			<CustName>abc</CustName>
+        </Customer>
+        <Customer>
+			<CustName>def</CustName>
+        </Customer>
+    </ListOfCustomers>
+</Home>

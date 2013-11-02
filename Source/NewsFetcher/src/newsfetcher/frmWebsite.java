@@ -35,7 +35,7 @@ public class frmWebsite extends javax.swing.JFrame {
         String kq = "";
 
         try {
-
+            
             Document document = saxBuilder.build(file);
 
             // Lay node root

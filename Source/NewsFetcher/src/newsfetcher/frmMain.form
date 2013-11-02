@@ -243,6 +243,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Xoa&#x301; trang web"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXoaTrangWebActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnChinhSuaTrang">
               <Properties>
