@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<script type="text/javascript">
+	function ShowSubMenu(menuID, isVisibled)
+	{
+		var subMenu = document.getElementById(menuID);
+		if(isVisibled == true)
+		{
+			subMenu.style.visibility = "visible";
+		}
+		else
+		{
+			subMenu.style.visibility = "hidden";
+		}
+	}
+</script>
+
+
+<style type="text/css">
+	#menuBar
+	{
+		background:url(Image/BarBg.png); 
+		background-position:center; 
+		margin-top:20px; 
+		background-repeat:no-repeat;
+	}
+
+	td a:link, td a:visited , td a:active
+	{
+		text-decoration:none;
+		color:#FFF;
+	}
+	
+	#menuBar td:hover
+	{
+		background:url(Image/Select.png);
+		background-position:center;
+		background-repeat:no-repeat;
+	}
+	
+	.sMenu
+	{
+		position:absolute;
+		visibility:hidden;
+		margin-top:10px;
+		margin-left:-2px;		
+		font-size:12px;
+		background:url(Image/mnuHover.png);
+		background-repeat:repeat-y;
+	}
+	
+	.sMenu tr td:hover
+	{
+		
+	}
+	
+</style>
+
+
+
+<body style="background:url(Image/bg.png); background-repeat:repeat-x; font-family:Tahoma, Geneva, sans-serif; font-size:14px;">
+
+	<div id="menuBar" align="center" >
+    	<table>
+        	<tr height="40" align="center">
+            	<td width="130">
+                	<a href="#">TRANG CHỦ</a>
+                </td>
+                
+                <td rowspan="2" width="130" onmouseover="ShowSubMenu('mnuMySoftware', true);" onmouseout="ShowSubMenu('mnuMySoftware', false);">
+                	<table width="130">
+                    	<tr>
+                        	<td>
+                            	<a href="#">PHẦN MỀM CỦA TUI</a>
+                            </td>
+                        	
+                        </tr>
+                        <tr>
+                        	<td>
+                            	<table id="mnuMySoftware" class="sMenu" width="130">
+                                    <tr><td height="33"><a href="#">Action Timer</a></td></tr>
+                                    <tr><td height="33"><a href="#">AppRunner</a></td></tr>
+                                    <tr><td height="33"><a href="#">Directory Assayer</a></td></tr>
+                                    <tr><td height="33"><a href="#">ImageGlass</a></td></tr>
+                                    <tr><td height="33"><a href="#">KinNecro</a></td></tr>
+                                    <tr><td height="33"><a href="#">QuickIMG Converter</a></td></tr>
+                                    <tr><td height="33"><a href="#">SmileyPAK</a></td></tr>
+                                    <tr><td height="33"><a href="#">RearmIt</a></td></tr>
+                                    <tr><td height="33"><a href="#">Wizero Extra Player</a></td></tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                	
+                </td>
+                
+                <td rowspan="2" width="130" onmouseover="ShowSubMenu('mnuMySource', true);" onmouseout="ShowSubMenu('mnuMySource', false);">
+                	<table width="130" align="center">
+                    	<tr align="center">
+                        	<td>
+                            	<a href="#">MÃ NGUỒN</a>
+                            </td>                        	
+                        </tr>
+                        
+                        <tr>
+                        	<td>
+                            	<table id="mnuMySource" class="sMenu" width="130">
+                                    <tr><td height="33"><a href="#">Quiz Test</a></td></tr>
+                                    <tr><td height="33"><a href="#">AppRunner</a></td></tr>
+                                </table>
+                            </td>
+                        </tr>
+                        
+                    </table>
+                	
+                </td>
+                
+                <td width="130">
+                	<a href="#">HỖ TRỢ</a>
+                </td>
+                
+                <td rowspan="2" width="130" onmouseover="ShowSubMenu('mnuAbout', true);" onmouseout="ShowSubMenu('mnuAbout', false);">
+                	<table width="130" align="center">
+                    	<tr align="center">
+                        	<td>
+                            	<a href="#">GIỚI THIỆU</a>
+                            </td>                        	
+                        </tr>
+                        
+                        <tr>
+                        	<td>
+                            	<table id="mnuAbout" class="sMenu" width="130">
+                                    <tr><td height="33"><a href="#">Tài trợ</a></td></tr>
+                                    <tr><td height="33"><a href="#">Về tôi</a></td></tr>
+                                </table>
+                            </td>
+                        </tr>
+                        
+                    </table>
+                	
+                </td>                
+            </tr>          
+                      
+        </table>
+    </div>
+
+</body>
+</html>

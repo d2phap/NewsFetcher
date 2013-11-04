@@ -3,3 +3,6 @@ http://hc.apache.org/downloads.cgi
 
 JDOM 2.0.5
 http://jdom.org/downloads/source.html
+
+HTML Cleaner2.6.1
+http://htmlcleaner.sourceforge.net/download.php

@@ -75,6 +75,7 @@ public class frmMain extends javax.swing.JFrame {
         btnXoaTrangWeb = new javax.swing.JButton();
         btnChinhSuaTrang = new javax.swing.JButton();
         btnXemTinTuc = new javax.swing.JButton();
+        btnTest = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtTest = new javax.swing.JTextArea();
@@ -182,6 +183,13 @@ public class frmMain extends javax.swing.JFrame {
             }
         });
 
+        btnTest.setText("Test xpath");
+        btnTest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTestActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -201,6 +209,8 @@ public class frmMain extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(btnXemTinTuc)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnTest)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
@@ -225,7 +235,8 @@ public class frmMain extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(cmbChuyenMuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnXemTinTuc))
+                    .addComponent(btnXemTinTuc)
+                    .addComponent(btnTest))
                 .addGap(15, 15, 15))
         );
 
@@ -265,34 +276,6 @@ public class frmMain extends javax.swing.JFrame {
     private void btnChinhSuaTrangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChinhSuaTrangActionPerformed
         // TODO add your handling code here:
         
-        JFileChooser c = new JFileChooser(".\\xml");
-        c.setFileFilter(new FileNameExtensionFilter("XML Files (*.xml)", "xml"));
-        
-        if(c.showOpenDialog(this) == JFileChooser.APPROVE_OPTION)
-        {
-            try {
-
-                XPathFactory xpf = XPathFactory.newInstance();
-                XPath xPath = xpf.newXPath();
-            
-                InputSource doc = new InputSource(new InputStreamReader(new FileInputStream(c.getSelectedFile())));
-
-                String expression = "//_1241350_1241363_1241378_1241431/category";
-                XPathExpression xpe = xPath.compile(expression);
-                
-                NodeList nl = (NodeList) xpe.evaluate(doc, XPathConstants.NODESET);
-                xpe = xPath.compile("@count");
-
-                for (int i = 0; i < nl.getLength(); i++) {
-                    System.out.println(xpe.evaluate(nl.item(i), XPathConstants.STRING));
-                }
-
-
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        }
         
     }//GEN-LAST:event_btnChinhSuaTrangActionPerformed
 
@@ -328,7 +311,8 @@ public class frmMain extends javax.swing.JFrame {
     private void btnXemTinTucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXemTinTucActionPerformed
         // TODO add your handling code here:
         try{
-            txtTest.setText(HTMLReader.getHTMLContent(new URL("http://www.viet-jo.com/rss/headline7.rdf")));
+            txtTest.setText(HTMLReader.getHTMLContent(
+                    new URL("http://news.zing.vn/Thanh-Manchester-ap-dao-doi-hinh-tieu-bieu-Premier-League-post365894.html")));
         }
         catch(Exception ex)
         {
@@ -347,21 +331,31 @@ public class frmMain extends javax.swing.JFrame {
             frmWebsite f = new frmWebsite(c.getSelectedFile());
             f.setVisible(true);
             
+            
+            
         }
         
     }//GEN-LAST:event_btnThemTrangWebActionPerformed
 
     private void btnXoaTrangWebActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaTrangWebActionPerformed
-        try {
-            // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_btnXoaTrangWebActionPerformed
 
-            String s = HTMLReader.abc(new URL("http://www.viet-jo.com/rss/headline7.rdf"));
+    private void btnTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTestActionPerformed
+        // TODO add your handling code here:
+        try {
+            // Téest lay noi dung HTML bang XPATH
+
+            String s = HTMLReader.abc(txtTest.getText(), 
+                    "//*[@id=\"content\"]/article/div[1]/p[2]/a/@href");
+            
+            JOptionPane.showMessageDialog(this, s);
             
         } catch (Exception ex) {
             Logger.getLogger(frmMain.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-    }//GEN-LAST:event_btnXoaTrangWebActionPerformed
+    }//GEN-LAST:event_btnTestActionPerformed
 
     
     
@@ -406,6 +400,7 @@ public class frmMain extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChinhSuaTrang;
+    private javax.swing.JButton btnTest;
     private javax.swing.JButton btnThemTrangWeb;
     private javax.swing.JButton btnXemTinTuc;
     private javax.swing.JButton btnXoaTrangWeb;
