@@ -4,8 +4,8 @@
  */
 package newsfetcher;
 
-import com.sun.xml.internal.fastinfoset.stax.factory.StAXInputFactory;
-import com.sun.xml.internal.stream.XMLInputFactoryImpl;
+/*import com.sun.xml.internal.fastinfoset.stax.factory.StAXInputFactory;
+import com.sun.xml.internal.stream.XMLInputFactoryImpl;*/
 import java.awt.Cursor;
 import java.net.URL;
 import javax.swing.JFileChooser;
@@ -36,7 +36,7 @@ import org.jdom2.input.SAXBuilder;
 
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
-
+import java.sql.*;
 /**
  *
  * @author Duong Dieu Phap
@@ -203,7 +203,7 @@ public class frmMain extends javax.swing.JFrame {
                         .addComponent(cmbChuyenMuc, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel3)
-                        .addGap(22, 22, 22)
+                        .addGap(18, 18, 18)
                         .addComponent(cmbTrangWeb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -283,10 +283,10 @@ public class frmMain extends javax.swing.JFrame {
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(new JFrame(), 
                 "Thông tin nhóm thực hiện:\n\n"
-                + "Nguyễn Ngọc Khánh - 1241350\n"
+                + "Nguyễn Ngọc Khánh - 1241350\n"
                 + "Bùi Bá Lộc - 1241363\n"
                 + "Dương Diệu Pháp - 1241378\n"
-                + "Nguyễn Quốc Tuấn - 1241431");
+                + "Nguyễn Quốc Tuấn - 1241431");
     }//GEN-LAST:event_lblThongTinPhanMemMouseClicked
 
     private void lblThongTinPhanMemMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThongTinPhanMemMouseEntered
@@ -302,10 +302,11 @@ public class frmMain extends javax.swing.JFrame {
     }//GEN-LAST:event_lblThongTinPhanMemMouseExited
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        
         // TODO add your handling code here:
         //dp = new DataProvider("./app.config");
         dp = new DataProvider("localhost", "dbNewsFetcher", 1433, true, "sa", "");
-        JOptionPane.showMessageDialog(this, "Kết nối CSDL: " + dp.isConnected());
+        JOptionPane.showMessageDialog(this, "Kết nối CSDL: " + dp.isConnected());
     }//GEN-LAST:event_formWindowOpened
 
     private void btnXemTinTucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXemTinTucActionPerformed
@@ -330,9 +331,6 @@ public class frmMain extends javax.swing.JFrame {
         {
             frmWebsite f = new frmWebsite(c.getSelectedFile());
             f.setVisible(true);
-            
-            
-            
         }
         
     }//GEN-LAST:event_btnThemTrangWebActionPerformed

@@ -6,6 +6,10 @@ package newsfetcher;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
@@ -17,6 +21,8 @@ import org.jdom2.input.SAXBuilder;
  */
 public class frmWebsite extends javax.swing.JFrame {
 
+    DataProvider dp = null;
+    
     /**
      * Creates new form frmWebsite
      */
@@ -43,11 +49,15 @@ public class frmWebsite extends javax.swing.JFrame {
             Element rootNode = document.getRootElement();
 
             // Lay noi dung cua node <website>
-            kq += "Tên website: " + rootNode.getChildText("website") + "\n";
-
+            String tenWebsite = rootNode.getChildText("website");
+            kq += "Tên website: " + tenWebsite + "\n";
+            
             // Lay noi dung cua node <url>
-            kq += "Địa chỉ: " + rootNode.getChildText("url") + "\n";
+            String urlWebsite = rootNode.getChildText("url");
+            kq += "Địa chỉ: " + urlWebsite + "\n";
 
+            
+            
             // Lay node <category>
             Element nodeCategory = rootNode.getChild("category");
 
@@ -58,7 +68,7 @@ public class frmWebsite extends javax.swing.JFrame {
             for (int i = 0; i < categoryList.size(); i++) {
                 Element element = categoryList.get(i);
 
-                kq += "\nTên chuyên mục: " + element.getAttributeValue("name") + "\n";
+                kq += "\nTên chuyên mục: " + element.getAttributeValue("name") + "\n";
                 kq += "Url: " + element.getAttributeValue("url") + "\n";
 
                 kq += "Link: " + element.getChildText("link") + "\n";
@@ -69,7 +79,6 @@ public class frmWebsite extends javax.swing.JFrame {
                 kq += "Nextpage: " + element.getChildText("nextpage") + "\n";
 
                 kq += "\n";
-
             }
 
         } catch (JDOMException e) {
