@@ -306,7 +306,7 @@ public class frmMain extends javax.swing.JFrame {
         // TODO add your handling code here:
         //dp = new DataProvider("./app.config");
         dp = new DataProvider("localhost", "dbNewsFetcher", 1433, true, "sa", "");
-        JOptionPane.showMessageDialog(this, "Kết nối CSDL: " + dp.isConnected());
+        //JOptionPane.showMessageDialog(this, "Kết nối CSDL: " + dp.isConnected());
     }//GEN-LAST:event_formWindowOpened
 
     private void btnXemTinTucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXemTinTucActionPerformed
@@ -324,6 +324,7 @@ public class frmMain extends javax.swing.JFrame {
     private void btnThemTrangWebActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemTrangWebActionPerformed
         // TODO add your handling code here:
         
+        /*/
         JFileChooser c = new JFileChooser(".\\xml");
         c.setFileFilter(new FileNameExtensionFilter("XML Files (*.xml)", "xml"));
         
@@ -332,6 +333,9 @@ public class frmMain extends javax.swing.JFrame {
             frmWebsite f = new frmWebsite(c.getSelectedFile());
             f.setVisible(true);
         }
+        //*/
+        frmWebsite f = new frmWebsite(18);
+        f.setVisible(true);
         
     }//GEN-LAST:event_btnThemTrangWebActionPerformed
 

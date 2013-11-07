@@ -8,6 +8,8 @@ import java.io.*;
 import java.util.*;
 import org.jdom2.*;
 import org.jdom2.input.SAXBuilder;
+import org.jdom2.output.Format;
+import org.jdom2.output.XMLOutputter;
 /**
  *
  * @author LEEYOOL
@@ -89,6 +91,38 @@ public class ReadWriteXML {
             url.setText(web._url);
             
             document.getRootElement().addContent(url);
+            
+            //TODO tao the category
+            List<Category> ls = web._categories;
+            Element category = new Element("category");
+            category.setAttribute(new Attribute("count", String.valueOf(ls.size())));
+            
+            for (int i = 0; i < ls.size(); i++) {
+                Category cate = ls.get(i);
+                
+                Element item = new Element("item");
+                item.setAttribute("id", String.valueOf(i+1));
+                item.setAttribute("name", cate._name);
+                item.setAttribute("url", cate._url);
+                
+                item.addContent(new Element("link").setText(cate._link));
+                item.addContent(new Element("title").setText(cate._title));
+                item.addContent(new Element("image").setText(cate._image));
+                item.addContent(new Element("date").setText(cate._date));
+                item.addContent(new Element("description").setText(cate._description));
+                item.addContent(new Element("nextpage").setText(cate._nextpage));
+                
+                category.addContent(item);
+            }
+            
+            document.getRootElement().addContent(category);
+            
+            XMLOutputter xmlOutput = new XMLOutputter();
+            xmlOutput.output(document, System.out);  
+            xmlOutput.setFormat(Format.getPrettyFormat());  
+            xmlOutput.output(document, new FileWriter(filePath));  
+            
+            
         } catch (Exception ex) {
             ex.printStackTrace();
         }
