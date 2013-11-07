@@ -34,8 +34,9 @@ public class Website {
             DataProvider dp = new DataProvider("localhost", "dbNewsFetcher", 1433, true, "sa", "");
             String sql = "";
             
-            sql = "INSERT INTO Website (name, url) VALUES (N'" + website._name + "', '" + website._url + "'); SELECT SCOPE_IDENTITY() AS id;";
-            
+            sql = "INSERT INTO Website (name, url) VALUES (N'" + website._name + "', '" + website._url + "')";
+            dp.ExecuteUpdate(sql);
+            sql = "SELECT SCOPE_IDENTITY() AS id";
             ResultSet rs = dp.ExecuteQuery(sql);
             rs.next();
             id = rs.getInt("id");
@@ -120,7 +121,7 @@ public class Website {
             
             sql = "SELECT * FROM Website";
             ResultSet rs = dp.ExecuteQuery(sql);
-            while (!rs.next()) {
+            while (rs.next()) {
                 Website web = new Website();
                 web._id = rs.getInt("id");
                 web._name = rs.getString("name");

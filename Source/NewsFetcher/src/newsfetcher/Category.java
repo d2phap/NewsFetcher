@@ -51,7 +51,7 @@ public class Category {
             sql = "SELECT * FROM Category WHERE id = " + id;
             ResultSet rs = dp.ExecuteQuery(sql);
             
-            if (!rs.next()) {
+            if (rs.next()) {
                 cate._id = rs.getInt("id");
                 cate._websiteID = rs.getInt("WebsiteID");
                 cate._name = rs.getString("name");
@@ -81,7 +81,7 @@ public class Category {
             sql = "SELECT * FROM Category";
             ResultSet rs = dp.ExecuteQuery(sql);
             
-            while(!rs.next()) {
+            while(rs.next()) {
                 Category cate = new Category();
                 cate._id = rs.getInt("id");
                 cate._websiteID = rs.getInt("WebsiteID");
@@ -112,7 +112,7 @@ public class Category {
             sql = "SELECT * FROM Category WHERE WebsiteID = " + websiteID;
             ResultSet rs = dp.ExecuteQuery(sql);
             
-            while(!rs.next()) {
+            while(rs.next()) {
                 Category cate = new Category();
                 cate._id = rs.getInt("id");
                 cate._websiteID = rs.getInt("WebsiteID");
@@ -158,8 +158,9 @@ public class Category {
                     + "'" + cate._image + "',"
                     + "'" + cate._date + "',"
                     + "'" + cate._description + "',"
-                    + "'" + cate._nextpage + "') SELECT SCOPE_IDENTITY() AS id;";
-            
+                    + "'" + cate._nextpage + "')";
+            dp.ExecuteUpdate(sql);
+            sql = "SELECT SCOPE_IDENTITY() AS id";
             ResultSet rs = dp.ExecuteQuery(sql);
             rs.next();
             id = rs.getInt("id");

@@ -46,7 +46,7 @@ public class Content {
             
             sql = "SELECT * FROM Content WHERE id = " + id;
             ResultSet rs = dp.ExecuteQuery(sql);
-            if (!rs.next()) {
+            if (rs.next()) {
                 con._id = rs.getInt("id");
                 con._categoryID = rs.getInt("categoryID");
                 con._link = rs.getString("link");
@@ -72,7 +72,7 @@ public class Content {
             sql = "SELECT * FROM Content";
             ResultSet rs = dp.ExecuteQuery(sql);
             
-            while(!rs.next()) {
+            while(rs.next()) {
                 Content con = new Content();
                 con._id = rs.getInt("id");
                 con._categoryID = rs.getInt("categoryID");
@@ -99,7 +99,7 @@ public class Content {
             sql = "SELECT * FROM Content WHERE categoryID = " + categoryID;
             ResultSet rs = dp.ExecuteQuery(sql);
             
-            while(!rs.next()) {
+            while(rs.next()) {
                 Content con = new Content();
                 con._id = rs.getInt("id");
                 con._categoryID = rs.getInt("categoryID");
@@ -137,11 +137,11 @@ public class Content {
                     + "'" + con._image + "', "
                     + "'" + con._date + "', "
                     + "N'" + con._description + "', "
-                    + "'" + con._nextpage + "') SELECT SCOPE_IDENTITY() AS id;";
+                    + "'" + con._nextpage + "')";
             
-            ResultSet rs = dp.ExecuteQuery(sql);
-            rs.next();
-            id = rs.getInt("id");
+            dp.ExecuteUpdate(sql);
+            //rs.next();
+            //id = rs.getInt("id");
             
         } catch (Exception ex) {
             throw ex;
