@@ -25,8 +25,12 @@ public class Website {
         this._url = "";
         this._categories = new ArrayList<>();
     }
-    /*
+    
+    /**
      * Insert Website vào CSDL
+     * @param website
+     * @return
+     * @throws Exception 
      */
     public static int insertWebsite(Website website) throws Exception {
         int id = -1;
@@ -46,8 +50,12 @@ public class Website {
         }
         return id;
     }
-    /*
+    
+    /**
      * Cập nhật Website
+     * @param website
+     * @return
+     * @throws Exception 
      */
     public static boolean updateWebsite(Website website) throws Exception {
         boolean flag = false;
@@ -70,8 +78,11 @@ public class Website {
         return flag;
     }
     
-    /*
+    /**
      * Xóa Website
+     * @param id
+     * @return
+     * @throws Exception 
      */
     public static boolean deleteWebsite(int id) throws Exception {
         boolean flag = false;
@@ -88,8 +99,11 @@ public class Website {
         return flag;
     }
     
-    /*
+    /**
      * Lấy thông tin website
+     * @param id
+     * @return
+     * @throws Exception 
      */
     public static Website getWebsite(int id) throws Exception {
         Website web = new Website();
@@ -113,6 +127,11 @@ public class Website {
         return web;
     }
     
+    /**
+     * Lấy danh sách website
+     * @return
+     * @throws Exception 
+     */
     public static List<Website> getListWebsite() throws Exception {
         List<Website> ls = new ArrayList<>();
         try {

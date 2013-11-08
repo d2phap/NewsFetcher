@@ -37,6 +37,7 @@ import org.jdom2.input.SAXBuilder;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import java.sql.*;
+import java.util.List;
 /**
  *
  * @author Duong Dieu Phap
@@ -310,21 +311,13 @@ public class frmMain extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btnXemTinTucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXemTinTucActionPerformed
-        // TODO add your handling code here:
-        try{
-            txtTest.setText(HTMLReader.getHTMLContent(
-                    new URL("http://news.zing.vn/Thanh-Manchester-ap-dao-doi-hinh-tieu-bieu-Premier-League-post365894.html")));
-        }
-        catch(Exception ex)
-        {
-            
-        }
+        
     }//GEN-LAST:event_btnXemTinTucActionPerformed
 
     private void btnThemTrangWebActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemTrangWebActionPerformed
         // TODO add your handling code here:
         
-        /*/
+        
         JFileChooser c = new JFileChooser(".\\xml");
         c.setFileFilter(new FileNameExtensionFilter("XML Files (*.xml)", "xml"));
         
@@ -333,10 +326,10 @@ public class frmMain extends javax.swing.JFrame {
             frmWebsite f = new frmWebsite(c.getSelectedFile());
             f.setVisible(true);
         }
-        //*/
+        /*
         frmWebsite f = new frmWebsite(18);
         f.setVisible(true);
-        
+        */
     }//GEN-LAST:event_btnThemTrangWebActionPerformed
 
     private void btnXoaTrangWebActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaTrangWebActionPerformed
@@ -345,14 +338,81 @@ public class frmMain extends javax.swing.JFrame {
     }//GEN-LAST:event_btnXoaTrangWebActionPerformed
 
     private void btnTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTestActionPerformed
-        // TODO add your handling code here:
+        
         try {
-            // Téest lay noi dung HTML bang XPATH
-
-            String s = HTMLReader.abc(txtTest.getText(), 
-                    "//*[@id=\"content\"]/article/div[1]/p[2]/a/@href");
             
-            JOptionPane.showMessageDialog(this, s);
+            List<Category> categories = new ArrayList<>();
+            Category cat = new Category();
+            
+            
+            cat._name = "Quốc tế";
+            cat._url = "http://nld.com.vn/thoi-su-quoc-te.htm";
+            cat._xpathLayout = "//*[@id=\"content\"]/div[1]/div[3]/div[2]/div";
+            
+            cat._link = "//*[@id=\"content\"]/div[1]/div[3]/div[2]/div[1]/h3/a/@href";
+            cat._title = "//*[@id=\"content\"]/div[1]/div[3]/div[2]/div[1]/h3/a";
+            cat._image = "//*[@id=\"content\"]/div[1]/div[3]/div[2]/div[1]/a/img/@src";
+            cat._date = "//*[@id=\"content\"]/div[1]/div[3]/div[2]/div[1]/p[1]";
+            cat._description = "//*[@id=\"content\"]/div[1]/div[3]/div[2]/div[1]/p[2]";
+            cat._nextpage = "//*[@id=\"content\"]/div[1]/div[3]/div[2]/div[11]/a[2]";
+            cat._xpathNextPage = "//*[@id=\"content\"]/div[1]/div[3]/div[2]/div[11]";
+            
+            /*
+            cat._name = "Du học";
+            cat._url = "http://ione.vnexpress.net/tin-tuc/hoc-duong/du-hoc";
+            cat._xpathLayout = "//*[@id=\"ione_tinnoibat_khac\"]/div";
+            cat._link = "//*[@id=\"ione_tinnoibat_khac\"]/div/div[2]/h3/a/@href";
+            cat._title = "//*[@id=\"ione_tinnoibat_khac\"]/div/div[2]/h3/a";
+            cat._image = "//*[@id=\"ione_tinnoibat_khac\"]/div/div[2]/div/a/img/@src";
+            cat._date = "//*[@id=\"ione_tinnoibat_khac\"]/div/div[1]/div[1]";
+            cat._description = "//*[@id=\"ione_tinnoibat_khac\"]/div/div[2]/p";
+            cat._nextpage = "//*[@id=\"contain\"]/div[3]/div[1]/div[2]/ul/li[2]/a";
+            cat._xpathNextPage = "//*[@id=\"contain\"]/div[3]/div[1]/div[2]/ul";
+            
+            /*
+            cat._name = "Fashion";
+            cat._url = "http://kenh14.vn/fashion/trang-2.chn";
+            cat._xpathLayout = "//*[@id=\"form1\"]/div[5]/div/div/div[3]/div[1]/ul/li";
+            cat._link = "//*[@id=\"form1\"]/div[5]/div/div/div[3]/div[2]/ul/li[1]/h2/a/@href";
+            cat._title = "//*[@id=\"form1\"]/div[5]/div/div/div[3]/div[1]/ul/li[1]/h2/a";
+            cat._image = "//*[@id=\"form1\"]/div[5]/div/div/div[3]/div[1]/ul/li[1]/a/img/@src";
+            cat._date = "//*[@id=\"form1\"]/div[5]/div/div/div[3]/div[1]/ul/li[1]/p[1]/span/@title";
+            cat._description = "//*[@id=\"form1\"]/div[5]/div/div/div[3]/div[1]/ul/li[1]/p[2]/text()";
+            cat._nextpage = "//*[@id=\"form1\"]/div[5]/div/div/div[3]/div[2]/a[3]";
+            cat._xpathNextPage = "//*[@id=\"form1\"]/div[5]/div/div/div[3]/div[2]";
+            */
+            
+            
+            categories.add(cat);
+            
+            Website web = new Website();
+            web._name = "Người lao động";
+            web._url = "http://nld.com.vn";
+            web._categories = categories;
+            
+            
+            HTMLReader html = new HTMLReader(new URL(cat._url));
+            
+            List<Content> ds = html.fetchNews(web._url, cat, 4);
+            
+            
+            
+            txtTest.setText(" ");
+            
+            for (int i = 0; i < ds.size(); i++) 
+            {
+                String re = "";
+                
+                re += "Title = " + ds.get(i)._title + "\n";
+                re += "Link = " + ds.get(i)._link + "\n";                
+                re += "Date = " + ds.get(i)._date + "\n";
+                re += "Image = " + ds.get(i)._image + "\n";
+                re += "Description = " + ds.get(i)._description + "\n\n\n";
+                
+                txtTest.setText(txtTest.getText() + re);
+            }
+            
+            
             
         } catch (Exception ex) {
             Logger.getLogger(frmMain.class.getName()).log(Level.SEVERE, null, ex);

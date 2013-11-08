@@ -1,51 +1,17 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<_1241350_1241363_1241378_1241431
+<_1241350_1241363_1241378_1241431>
 	<website>Người lao động</website>
 	<url>http://nld.com.vn/</url>
-	<category count="5">
+	<category count="1">
 		<item id="1" name="Quốc tế" url="http://nld.com.vn/thoi-su-quoc-te.htm">
-			<link>//*[@id="content"]/div[1]/div[3]/div[2]/div[1]/h3/a</link>
+			<xpathlayout>//*[@id="content"]/div[1]/div[3]/div[2]/div</xpathlayout>
+			<link>//*[@id="content"]/div[1]/div[3]/div[2]/div[1]/h3/a/@href</link>
 			<title>//*[@id="content"]/div[1]/div[3]/div[2]/div[1]/h3/a</title>
-			<image>//*[@id="content"]/div[1]/div[3]/div[2]/div[1]/a/img</image>
+			<image>//*[@id="content"]/div[1]/div[3]/div[2]/div[1]/a/img/@src</image>
 			<date>//*[@id="content"]/div[1]/div[3]/div[2]/div[1]/p[1]</date>
 			<description>//*[@id="content"]/div[1]/div[3]/div[2]/div[1]/p[2]</description>
 			<nextpage>//*[@id="content"]/div[1]/div[3]/div[2]/div[11]/a[2]</nextpage>
-		</item>
-		
-		<item id="2" name="Kinh tế" url="http://nld.com.vn/kinh-te.htm">
-			<link>//*[@id="content"]/div[1]/div[3]/div[2]/div[1]/h3/a</link>
-			<title>//*[@id="content"]/div[1]/div[3]/div[2]/div[1]/h3/a</title>
-			<image>//*[@id="content"]/div[1]/div[3]/div[2]/div[1]/a/img</image>
-			<date>//*[@id="content"]/div[1]/div[3]/div[2]/div[1]/p[1]</date>
-			<description>//*[@id="content"]/div[1]/div[3]/div[2]/div[1]/p[2]</description>
-			<nextpage>//*[@id="content"]/div[1]/div[3]/div[2]/div[11]/a[2]</nextpage>
-		</item>
-		
-		<item id="3" name="Giáo dục" url="http://nld.com.vn/giao-duc-khoa-hoc.htm">
-			<link>//*[@id="content"]/div[1]/div[3]/div[2]/div[1]/h3/a</link>
-			<title>//*[@id="content"]/div[1]/div[3]/div[2]/div[1]/h3/a</title>
-			<image>//*[@id="content"]/div[1]/div[3]/div[2]/div[1]/a/img</image>
-			<date>//*[@id="content"]/div[1]/div[3]/div[2]/div[1]/p[1]</date>
-			<description>//*[@id="content"]/div[1]/div[3]/div[2]/div[1]/p[2]</description>
-			<nextpage>//*[@id="content"]/div[1]/div[3]/div[2]/div[11]/a[2]</nextpage>
-		</item>
-		
-		<item id="4" name="Pháp luật" url="http://nld.com.vn/phap-luat.htm">
-			<link>//*[@id="content"]/div[1]/div[3]/div[2]/div[1]/h3/a</link>
-			<title>//*[@id="content"]/div[1]/div[3]/div[2]/div[1]/h3/a</title>
-			<image>//*[@id="content"]/div[1]/div[3]/div[2]/div[1]/a/img</image>
-			<date>//*[@id="content"]/div[1]/div[3]/div[2]/div[1]/p[1]</date>
-			<description>//*[@id="content"]/div[1]/div[3]/div[2]/div[1]/p[2]</description>
-			<nextpage>//*[@id="content"]/div[1]/div[3]/div[2]/div[11]/a[2]</nextpage>
-		</item>
-		
-		<item id="5" name="Sức khỏe" url="http://nld.com.vn/suc-khoe.htm">
-			<link>//*[@id="content"]/div[1]/div[3]/div[2]/div[1]/h3/a</link>
-			<title>//*[@id="content"]/div[1]/div[3]/div[2]/div[1]/h3/a</title>
-			<image>//*[@id="content"]/div[1]/div[3]/div[2]/div[1]/a/img</image>
-			<date>//*[@id="content"]/div[1]/div[3]/div[2]/div[1]/p[1]</date>
-			<description>//*[@id="content"]/div[1]/div[3]/div[2]/div[1]/p[2]</description>
-			<nextpage>//*[@id="content"]/div[1]/div[3]/div[2]/div[11]/a[2]</nextpage>
+			<xpathnextpage>//*[@id="content"]/div[1]/div[3]/div[2]/div[11]</xpathnextpage>
 		</item>
 	</category>
 </_1241350_1241363_1241378_1241431>

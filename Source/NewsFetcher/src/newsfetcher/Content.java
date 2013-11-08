@@ -38,6 +38,12 @@ public class Content {
         this._nextpage = "";
     }
     
+    /**
+     * Lấy bài viết
+     * @param id
+     * @return
+     * @throws Exception 
+     */
     public static Content getContent(int id) throws Exception {
         Content con = new Content();
         try {
@@ -63,6 +69,11 @@ public class Content {
         return con;
     }
     
+    /**
+     * Lấy danh sách bài viết
+     * @return
+     * @throws Exception 
+     */
     public static List<Content> getListContent() throws Exception {
         List<Content> ls = new ArrayList<>();
         try {
@@ -90,6 +101,12 @@ public class Content {
         return ls;
     }
     
+    /**
+     * Lấy danh sách bài viết
+     * @param categoryID
+     * @return
+     * @throws Exception 
+     */
     public static List<Content> getListContent(int categoryID) throws Exception {
         List<Content> ls = new ArrayList<>();
         try {
@@ -117,6 +134,12 @@ public class Content {
         return ls;
     }
     
+    /**
+     * Thêm bài viết
+     * @param con
+     * @return
+     * @throws Exception 
+     */
     public static int insertContent (Content con) throws Exception {
         int id = -1;
         try {
@@ -149,6 +172,12 @@ public class Content {
         return id;
     }
     
+    /**
+     * Cập nhật bài viết
+     * @param con
+     * @return
+     * @throws Exception 
+     */
     public static boolean updateContent(Content con) throws Exception {
         boolean flag = false;
         try {
@@ -172,6 +201,12 @@ public class Content {
         return flag;
     }
     
+    /**
+     * Xoá bài viết
+     * @param id
+     * @return
+     * @throws Exception 
+     */
     public static boolean deleteContent(int id) throws Exception {
         boolean flag = false;
         try {
