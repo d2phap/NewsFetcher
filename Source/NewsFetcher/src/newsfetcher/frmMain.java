@@ -344,7 +344,7 @@ public class frmMain extends javax.swing.JFrame {
             List<Category> categories = new ArrayList<>();
             Category cat = new Category();
             
-            
+            /*
             cat._name = "Quốc tế";
             cat._url = "http://nld.com.vn/thoi-su-quoc-te.htm";
             cat._xpathLayout = "//*[@id=\"content\"]/div[1]/div[3]/div[2]/div";
@@ -357,7 +357,7 @@ public class frmMain extends javax.swing.JFrame {
             cat._nextpage = "//*[@id=\"content\"]/div[1]/div[3]/div[2]/div[11]/a[2]";
             cat._xpathNextPage = "//*[@id=\"content\"]/div[1]/div[3]/div[2]/div[11]";
             
-            /*
+            
             cat._name = "Du học";
             cat._url = "http://ione.vnexpress.net/tin-tuc/hoc-duong/du-hoc";
             cat._xpathLayout = "//*[@id=\"ione_tinnoibat_khac\"]/div";
@@ -382,12 +382,23 @@ public class frmMain extends javax.swing.JFrame {
             cat._xpathNextPage = "//*[@id=\"form1\"]/div[5]/div/div/div[3]/div[2]";
             */
             
+            cat._name = "Chính trị xã hội";
+            cat._url = "http://www.thanhnien.com.vn/pages/chinh-tri-xa-hoi.aspx";
+            cat._xpathLayout = "//*[@id=\"divtoptin\"]";
+            cat._link = "//*[@id=\"divtoptin\"]/div[1]/a/@href";
+            cat._title = "//*[@id=\"divtoptin\"]/div[1]/a";
+            cat._image = "//*[@id=\"divtoptin\"]/div[2]/div[1]/a/img/@src";
+            cat._date = "//*[@id=\"divtoptin\"]/div[1]/span";
+            cat._description = "//*[@id=\"divtoptin\"]/div[2]/div[2]/text()";
+            cat._nextpage = "//*[@id=\"ctl00_m_g_6000cd1a_7fe3_4098_b899_5e9f4034e834\"]/div[2]/div[11]/div[2]/div[11]/div/a";
+            cat._xpathNextPage = "//*[@id=\"ctl00_m_g_6000cd1a_7fe3_4098_b899_5e9f4034e834\"]/div[2]/div[11]/div[2]/div[11]/div";
+            
             
             categories.add(cat);
             
             Website web = new Website();
             web._name = "Người lao động";
-            web._url = "http://nld.com.vn";
+            web._url = "http://www.thanhnien.com.vn";
             web._categories = categories;
             
             

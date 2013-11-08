@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<_1241350_1241363_1241378_1241431>
+	<website>Thanh niên</website>
+	<url>http://www.thanhnien.com.vn/</url>
+	<category count="1">
+		<item id="1" name="Chính trị xã hội" url="http://www.thanhnien.com.vn/pages/chinh-tri-xa-hoi.aspx">
+			<xpathlayout>//*[@id="divtoptin"]</xpathlayout>
+			<link>//*[@id="divtoptin"]/div[1]/a/@href</link>
+			<title>//*[@id="divtoptin"]/div[1]/a</title>
+			<image>//*[@id="divtoptin"]/div[2]/div[1]/a/img/@src</image>
+			<date>//*[@id="divtoptin"]/div[1]/span</date>
+			<description>//*[@id="divtoptin"]/div[2]/div[2]/text()</description>
+			<nextpage>//*[@id="ctl00_m_g_6000cd1a_7fe3_4098_b899_5e9f4034e834"]/div[2]/div[11]/div[2]/div[11]/div/a</nextpage>
+			<xpathnextpage>//*[@id="ctl00_m_g_6000cd1a_7fe3_4098_b899_5e9f4034e834"]/div[2]/div[11]/div[2]/div[11]/div</xpathnextpage>
+		</item>
+	</category>
+</_1241350_1241363_1241378_1241431>

@@ -390,12 +390,24 @@ public class HTMLReader {
                         
                         System.out.println(tempHref);
 
-                        //Neu node hien tai la node NextPage
-                        if (tempHrefNext.compareTo(tempHref) == 0)
+                        //Nếu kết thúc danh sách
+                        if (i == dsNodePage.getLength() - 1) 
                         {
+                            //Thì nodeNextPageNext chính là node đang duyệt
+                            nNextPageNext = (Node) el;
                             nNextPageLink = tempHref;
-
-                            //Tim node NextPage ke tiep                            
+                            break;
+                        }
+                        else //Chua ket thuc danh sach
+                        {
+                            //Neu node hien tai la node NextPage
+                            if (tempHrefNext.compareTo(tempHref) == 0) {
+                                nNextPageLink = tempHref;
+                            }
+                            
+                            //Ngược lại nodeNextPageNext chính là node tiếp theo
+                            //Tim nodeNextPageNext kế tiếp
+                            //...
                         }
 
                     }
@@ -530,13 +542,26 @@ public class HTMLReader {
                         
                         //System.out.println(tempHref);
 
-                        //Neu node hien tai la node NextPage
-                        if (tempHrefNext.compareTo(tempHref) == 0)
+                        //Nếu kết thúc danh sách
+                        if (i == dsNodePage.getLength() - 1) 
                         {
+                            //Thì nodeNextPageNext chính là node đang duyệt
+                            nNextPageNext = (Node) el;
                             nNextPageLink = tempHref;
-
-                            //Tim node NextPage ke tiep                            
+                            break;
                         }
+                        else //Chua ket thuc danh sach
+                        {
+                            //Neu node hien tai la node NextPage
+                            if (tempHrefNext.compareTo(tempHref) == 0) {
+                                nNextPageLink = tempHref;
+                            }
+                            
+                            //Ngược lại nodeNextPageNext chính là node tiếp theo
+                            //Tim nodeNextPageNext kế tiếp
+                            //...
+                        }
+                        
 
                     }
                 }//end for
