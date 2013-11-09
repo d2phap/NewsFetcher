@@ -11,7 +11,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.net.URL;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -20,6 +19,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.UIManager;
 
 /**
  *
@@ -66,7 +66,7 @@ public class frmMain extends javax.swing.JFrame {
         btnXoaTrangWeb = new javax.swing.JButton();
         btnChinhSuaTrang = new javax.swing.JButton();
         btnXemTinTuc = new javax.swing.JButton();
-        btnTest = new javax.swing.JButton();
+        btnLayTin = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtTest = new javax.swing.JTextArea();
@@ -177,10 +177,10 @@ public class frmMain extends javax.swing.JFrame {
             }
         });
 
-        btnTest.setText("Test xpath");
-        btnTest.addActionListener(new java.awt.event.ActionListener() {
+        btnLayTin.setText("Lấy tin tức");
+        btnLayTin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTestActionPerformed(evt);
+                btnLayTinActionPerformed(evt);
             }
         });
 
@@ -204,7 +204,7 @@ public class frmMain extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnXemTinTuc)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnTest)
+                        .addComponent(btnLayTin)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
@@ -230,7 +230,7 @@ public class frmMain extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(cmbChuyenMuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnXemTinTuc)
-                    .addComponent(btnTest))
+                    .addComponent(btnLayTin))
                 .addGap(15, 15, 15))
         );
 
@@ -348,14 +348,16 @@ public class frmMain extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnXoaTrangWebActionPerformed
 
-    private void btnTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTestActionPerformed
+    private void btnLayTinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLayTinActionPerformed
         
         try {
-            
+            /*
             List<Category> categories = new ArrayList<>();
             Category cat = new Category();
             
-            /*
+            
+            cat._id = 20;
+            cat._websiteID = 6;
             cat._name = "Quốc tế";
             cat._url = "http://nld.com.vn/thoi-su-quoc-te.htm";
             cat._xpathLayout = "//*[@id=\"content\"]/div[1]/div[3]/div[2]/div";
@@ -368,7 +370,9 @@ public class frmMain extends javax.swing.JFrame {
             cat._nextpage = "//*[@id=\"content\"]/div[1]/div[3]/div[2]/div[11]/a[2]";
             cat._xpathNextPage = "//*[@id=\"content\"]/div[1]/div[3]/div[2]/div[11]";
             
-            
+            /*
+            cat._id = 19;
+            cat._websiteID = 5;
             cat._name = "Du học";
             cat._url = "http://ione.vnexpress.net/tin-tuc/hoc-duong/du-hoc";
             cat._xpathLayout = "//*[@id=\"ione_tinnoibat_khac\"]/div";
@@ -381,6 +385,8 @@ public class frmMain extends javax.swing.JFrame {
             cat._xpathNextPage = "//*[@id=\"contain\"]/div[3]/div[1]/div[2]/ul";
             
             /*
+            cat._id = 18;
+            cat._websiteID = 4;
             cat._name = "Fashion";
             cat._url = "http://kenh14.vn/fashion/trang-2.chn";
             cat._xpathLayout = "//*[@id=\"form1\"]/div[5]/div/div/div[3]/div[1]/ul/li";
@@ -391,8 +397,8 @@ public class frmMain extends javax.swing.JFrame {
             cat._description = "//*[@id=\"form1\"]/div[5]/div/div/div[3]/div[1]/ul/li[1]/p[2]/text()";
             cat._nextpage = "//*[@id=\"form1\"]/div[5]/div/div/div[3]/div[2]/a[3]";
             cat._xpathNextPage = "//*[@id=\"form1\"]/div[5]/div/div/div[3]/div[2]";
-            */
             
+            /*
             cat._name = "Chính trị xã hội";
             cat._url = "http://www.thanhnien.com.vn/pages/chinh-tri-xa-hoi.aspx";
             cat._xpathLayout = "//*[@id=\"divtoptin\"]";
@@ -403,22 +409,30 @@ public class frmMain extends javax.swing.JFrame {
             cat._description = "//*[@id=\"divtoptin\"]/div[2]/div[2]/text()";
             cat._nextpage = "//*[@id=\"ctl00_m_g_6000cd1a_7fe3_4098_b899_5e9f4034e834\"]/div[2]/div[11]/div[2]/div[11]/div/a";
             cat._xpathNextPage = "//*[@id=\"ctl00_m_g_6000cd1a_7fe3_4098_b899_5e9f4034e834\"]/div[2]/div[11]/div[2]/div[11]/div";
+            */
             
-            
-            categories.add(cat);
-            
+            //categories.add(cat);
+            /*
             Website web = new Website();
             web._name = "Người lao động";
-            web._url = "http://www.thanhnien.com.vn";
+            web._url = "http://nld.com.vn";
             web._categories = categories;
+            */
             
             
-            HTMLReader html = new HTMLReader(new URL(cat._url));
+            //HTMLReader html = new HTMLReader(new URL(cat._url));
+            //List<Content> dsBaiViet = html.getTextContent(html.getDocument(), cat);
+            //List<Content> ds = html.fetchNews2(web._url, cat, 4);
             
-            List<Content> ds = html.fetchNews(web._url, cat, 4);
+            
+            Website web = listWebsite.get(cmbTrangWeb.getSelectedIndex());
+            Category cat = listCategory.get(cmbChuyenMuc.getSelectedIndex());
             
             
+            frmLayTin f = new frmLayTin(web, cat);
+            f.setVisible(true);
             
+            /*
             txtTest.setText(" ");
             
             for (int i = 0; i < ds.size(); i++) 
@@ -433,16 +447,15 @@ public class frmMain extends javax.swing.JFrame {
                 
                 txtTest.setText(txtTest.getText() + re);
             }
-            
-            
+            */
             
         } catch (Exception ex) {
             Logger.getLogger(frmMain.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_btnTestActionPerformed
+    }//GEN-LAST:event_btnLayTinActionPerformed
 
     
-    /*
+    /**
      * Main method
      */
     private void LoadDanhSachTrang() {
@@ -458,6 +471,10 @@ public class frmMain extends javax.swing.JFrame {
         } 
     }
     
+    /**
+     * Load danh sách chuyên mục
+     * @param idx 
+     */
     private void LoadChuyenMuc(int idx) {
         try {
             cmbChuyenMuc.removeAllItems();
@@ -487,7 +504,7 @@ public class frmMain extends javax.swing.JFrame {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
                     break;
                 }
             }
@@ -511,7 +528,7 @@ public class frmMain extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChinhSuaTrang;
-    private javax.swing.JButton btnTest;
+    private javax.swing.JButton btnLayTin;
     private javax.swing.JButton btnThemTrangWeb;
     private javax.swing.JButton btnXemTinTuc;
     private javax.swing.JButton btnXoaTrangWeb;

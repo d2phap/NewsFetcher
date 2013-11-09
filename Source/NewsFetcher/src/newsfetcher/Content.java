@@ -242,4 +242,38 @@ public class Content {
         }
         return flag;
     }
+    
+    /**
+     * Kiểm tra bài viết có tồn tại tỏng CSDL ko?
+     * @param url link của bài viết
+     * @param catID mã chuyên mục
+     * @param webID mã trang web
+     * @return 
+     */
+    public static boolean isExisted(String url, int catID, int webID) {
+        
+        try {
+            DataProvider dp = new DataProvider("localhost", "dbNewsFetcher", 1433, true, "sa", "");
+            String sql = "";
+            
+            sql = "SELECT * " +
+                "FROM Content con, Category ca " +
+                "WHERE con.categoryID = ca.id AND " +
+                "	con.categoryID = " + catID + " AND " +
+                "	ca.WebsiteID = " + webID + " AND " +
+                "	con.link = N'" + url + "' ";
+            
+            
+            ResultSet rs = dp.ExecuteQuery(sql);
+            
+            if (rs.next()) {
+                return true;
+            }
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        
+        return false;
+    }
 }

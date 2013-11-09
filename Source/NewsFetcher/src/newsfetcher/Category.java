@@ -293,4 +293,32 @@ public class Category {
         }
         return flag;
     }
+    
+    /**
+     * Nhân bản chuyên mục
+     * @return 
+     */
+    public Category cloneCategory()
+    {
+        Category cat = new Category();
+        
+        cat._id = this._id;
+        cat._websiteID = this._websiteID;
+        cat._name = this._name;
+        cat._url = this._url;
+        cat._xpathLayout = this._xpathLayout;
+        
+        cat._link = this._link;
+        cat._title = this._title;
+        cat._image = this._image;
+        cat._date = this._date;
+        cat._description = this._description;
+        cat._nextpage = this._nextpage;
+        cat._xpathNextPage = this._xpathNextPage;
+        
+        cat._contents = this._contents;
+        
+        return cat;
+    }
+    
 }
