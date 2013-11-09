@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Duong Dieu Phap
  */
-public class frmWebsite extends javax.swing.JFrame {
+public class frmWebsite extends javax.swing.JDialog {
     public int ID;
     public boolean isInsert = true;
     /**
@@ -410,6 +410,7 @@ public class frmWebsite extends javax.swing.JFrame {
     private void jbtnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnLuuActionPerformed
         // TODO add your handling code here:
         updateWebsite();
+        this.dispose();
     }//GEN-LAST:event_jbtnLuuActionPerformed
 
     private void jbtnXuatXMLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnXuatXMLActionPerformed

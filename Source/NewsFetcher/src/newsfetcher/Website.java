@@ -90,6 +90,8 @@ public class Website {
             DataProvider dp = new DataProvider("localhost", "dbNewsFetcher", 1433, true, "sa", "");
             String sql = "";
             
+            Category.deleteCategoryByWebsiteId(id);
+            
             sql = "DELETE FROM Website WHERE id = " + id;
             dp.ExecuteUpdate(sql);
             flag = true;

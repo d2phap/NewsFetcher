@@ -52,12 +52,14 @@ public class ReadWriteXML {
                 
                 cate._name = element.getAttributeValue("name");
                 cate._url = element.getAttributeValue("url");
+                cate._xpathLayout = element.getChildText("xpathlayout");
                 cate._link = element.getChildText("link");
                 cate._title = element.getChildText("title");
                 cate._image = element.getChildText("image");
                 cate._date = element.getChildText("date");
                 cate._description = element.getChildText("description");
                 cate._nextpage = element.getChildText("nextpage");
+                cate._xpathNextPage = element.getChildText("xpathnextpage");
                 cate._websiteID = web._id;
                 
                 Category.insertCategory(cate);
@@ -106,11 +108,13 @@ public class ReadWriteXML {
                 item.setAttribute("url", cate._url);
                 
                 item.addContent(new Element("link").setText(cate._link));
+                item.addContent(new Element("xpathlayout").setText(cate._xpathLayout));
                 item.addContent(new Element("title").setText(cate._title));
                 item.addContent(new Element("image").setText(cate._image));
                 item.addContent(new Element("date").setText(cate._date));
                 item.addContent(new Element("description").setText(cate._description));
                 item.addContent(new Element("nextpage").setText(cate._nextpage));
+                item.addContent(new Element("xpathnextpage").setText(cate._xpathNextPage));
                 
                 category.addContent(item);
             }
@@ -121,7 +125,6 @@ public class ReadWriteXML {
             xmlOutput.output(document, System.out);  
             xmlOutput.setFormat(Format.getPrettyFormat());  
             xmlOutput.output(document, new FileWriter(filePath));  
-            
             
         } catch (Exception ex) {
             ex.printStackTrace();

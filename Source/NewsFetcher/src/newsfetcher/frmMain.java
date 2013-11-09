@@ -7,48 +7,38 @@ package newsfetcher;
 /*import com.sun.xml.internal.fastinfoset.stax.factory.StAXInputFactory;
 import com.sun.xml.internal.stream.XMLInputFactoryImpl;*/
 import java.awt.Cursor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.net.URL;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.StringReader;
-import java.net.MalformedURLException;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.stream.XMLInputFactory;
 
-import javax.xml.xpath.XPath;
-import javax.xml.xpath.XPathConstants;
-import javax.xml.xpath.XPathExpression;
-import javax.xml.xpath.XPathFactory;
-import org.jdom2.Document;
-import org.jdom2.JDOMException;
-import org.jdom2.input.SAXBuilder;
-
-import org.w3c.dom.NodeList;
-import org.xml.sax.InputSource;
-import java.sql.*;
-import java.util.List;
 /**
  *
  * @author Duong Dieu Phap
  */
 public class frmMain extends javax.swing.JFrame {
 
+    /*
+     * Variable
+     */
+    public List<Website> listWebsite;
+    public List<Category> listCategory;
+    
     /**
      * Creates new form frmMain
      */
     public frmMain() {
         initComponents();
+        LoadDanhSachTrang();
     }
     
     DataProvider dp = null;
@@ -150,11 +140,14 @@ public class frmMain extends javax.swing.JFrame {
 
         jLabel3.setText("Trang web:");
 
-        cmbTrangWeb.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbTrangWeb.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                int idx  = cmbTrangWeb.getSelectedIndex();
+                LoadChuyenMuc(idx);
+            }
+        });
 
         jLabel4.setText("Chuyên mục:");
-
-        cmbChuyenMuc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnThemTrangWeb.setText("Thêm trang mới");
         btnThemTrangWeb.addActionListener(new java.awt.event.ActionListener() {
@@ -274,8 +267,22 @@ public class frmMain extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /*
+     * Event Method
+     */
     private void btnChinhSuaTrangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChinhSuaTrangActionPerformed
         // TODO add your handling code here:
+        int idx = cmbTrangWeb.getSelectedIndex();
+        int webID = listWebsite.get(idx)._id;
+        frmWebsite f = new frmWebsite(webID);
+        f.setVisible(true);
+        
+        f.addWindowListener(new WindowAdapter() {
+            @Override 
+            public void windowClosed(WindowEvent e) {
+                LoadDanhSachTrang();
+            }
+        });
         
         
     }//GEN-LAST:event_btnChinhSuaTrangActionPerformed
@@ -294,7 +301,6 @@ public class frmMain extends javax.swing.JFrame {
         // TODO add your handling code here:
         lblThongTinPhanMem.setText("Thông tin <");
         lblThongTinPhanMem.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        
     }//GEN-LAST:event_lblThongTinPhanMemMouseEntered
 
     private void lblThongTinPhanMemMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThongTinPhanMemMouseExited
@@ -316,25 +322,30 @@ public class frmMain extends javax.swing.JFrame {
 
     private void btnThemTrangWebActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemTrangWebActionPerformed
         // TODO add your handling code here:
-        
-        
         JFileChooser c = new JFileChooser(".\\xml");
         c.setFileFilter(new FileNameExtensionFilter("XML Files (*.xml)", "xml"));
         
         if(c.showOpenDialog(this) == JFileChooser.APPROVE_OPTION)
         {
-            frmWebsite f = new frmWebsite(c.getSelectedFile());
+            int websiteID = ReadWriteXML.ReadXML(c.getSelectedFile());
+            frmWebsite f = new frmWebsite(websiteID);
             f.setVisible(true);
+            
+            LoadDanhSachTrang();
         }
-        /*
-        frmWebsite f = new frmWebsite(18);
-        f.setVisible(true);
-        */
     }//GEN-LAST:event_btnThemTrangWebActionPerformed
 
     private void btnXoaTrangWebActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaTrangWebActionPerformed
         
-        
+        try {
+            int idx = cmbTrangWeb.getSelectedIndex();
+            int webID = listWebsite.get(idx)._id;
+            
+            Website.deleteWebsite(webID);
+            LoadDanhSachTrang();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }//GEN-LAST:event_btnXoaTrangWebActionPerformed
 
     private void btnTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTestActionPerformed
@@ -431,8 +442,35 @@ public class frmMain extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTestActionPerformed
 
     
+    /*
+     * Main method
+     */
+    private void LoadDanhSachTrang() {
+        try {
+            cmbTrangWeb.removeAllItems();
+            listWebsite = Website.getListWebsite();
+            
+            for (int i = 0; i < listWebsite.size(); i++) {
+                cmbTrangWeb.addItem(listWebsite.get(i)._name);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } 
+    }
     
-    
+    private void LoadChuyenMuc(int idx) {
+        try {
+            cmbChuyenMuc.removeAllItems();
+            listCategory = listWebsite.get(idx)._categories;
+            
+            for (int i = 0; i < listCategory.size(); i++) {
+                cmbChuyenMuc.addItem(listCategory.get(i)._name);
+            }
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
     
     
     
@@ -491,4 +529,20 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JLabel lblThongTinPhanMem;
     private javax.swing.JTextArea txtTest;
     // End of variables declaration//GEN-END:variables
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

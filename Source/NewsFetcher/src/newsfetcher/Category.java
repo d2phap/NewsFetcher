@@ -255,7 +255,37 @@ public class Category {
             DataProvider dp = new DataProvider("localhost", "dbNewsFetcher", 1433, true, "sa", "");
             String sql = "";
             
+            Content.deleteContentByCategoryId(id);
+            
             sql = "DELETE FROM Category WHERE id = " + id;
+            dp.ExecuteUpdate(sql);
+            flag = true;
+        } catch (Exception ex) {
+            throw ex;
+        }
+        return flag;
+    }
+    
+    /**
+     * Xoá chuyên mục qua Website ID
+     * @param WebsiteID
+     * @return
+     * @throws Exception 
+     */
+    public static boolean deleteCategoryByWebsiteId(int websiteId) throws Exception {
+        boolean flag = false;
+        try {
+            DataProvider dp = new DataProvider("localhost", "dbNewsFetcher", 1433, true, "sa", "");
+            String sql = "";
+            
+            List<Category> ls = Category.getListCategory(websiteId);
+            
+            for(int i = 0; i < ls.size(); i++) {
+                int categoryId = ls.get(i)._id;
+                Content.deleteContentByCategoryId(categoryId);
+            }
+            
+            sql = "DELETE FROM Category WHERE WebsiteID = " + websiteId;
             dp.ExecuteUpdate(sql);
             flag = true;
         } catch (Exception ex) {

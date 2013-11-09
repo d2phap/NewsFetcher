@@ -100,5 +100,4 @@ public class DataProvider {
         Statement s = con.createStatement();
         return s.executeUpdate(sql);
     }
-    
 }

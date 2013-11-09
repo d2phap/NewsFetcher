@@ -221,4 +221,25 @@ public class Content {
         }
         return flag;
     }
+    
+    /**
+     * Xoá bài viết trên CategoryID
+     * @param categoryId
+     * @return
+     * @throws Exception 
+     */
+    public static boolean deleteContentByCategoryId(int categoryId) throws Exception {
+        boolean flag = false;
+        try {
+            DataProvider dp = new DataProvider("localhost", "dbNewsFetcher", 1433, true, "sa", "");
+            String sql = "";
+            
+            sql = "DELETE FROM Content WHERE categoryID = " + categoryId;
+            dp.ExecuteUpdate(sql);
+            flag = true;
+        } catch (Exception ex) {
+            throw ex;
+        }
+        return flag;
+    }
 }
