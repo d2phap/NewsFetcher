@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<_1241350_1241363_1241378_1241431>
+	<website>VNExpress Giải trí</website>
+	<url>http://giaitri.vnexpress.net</url>
+	<category count="1">
+		<item id="1" name="Giới sao > Trong nước" url="http://giaitri.vnexpress.net/tin-tuc/gioi-sao/trong-nuoc">
+			<xpathlayout>//*[@id="box_list_news_sub"]/div/ul/li</xpathlayout>
+			<link>//*[@id="box_list_news_sub"]/div/ul/li[1]/h2/p/b/a/@href</link>
+			<title>//*[@id="box_list_news_sub"]/div/ul/li[1]/h2/p/b/a</title>
+			<image>//*[@id="box_list_news_sub"]/div/ul/li[1]/a/img/@src</image>
+			<date>//*[@id="box_list_news_sub"]/div/ul/li[1]/p[1]/span</date>
+			<description>//*[@id="box_list_news_sub"]/div/ul/li[1]/p[2]/text()</description>
+			<nextpage>//*[@id="pagination"]/ul/li[2]/a</nextpage>
+			<xpathnextpage>//*[@id="pagination"]/ul</xpathnextpage>
+		</item>
+		<item id="2" name="Giới sao > Quốc tế" url="http://giaitri.vnexpress.net/tin-tuc/gioi-sao/quoc-te">
+			<xpathlayout>//*[@id="box_list_news_sub"]/div/ul/li</xpathlayout>
+			<link>//*[@id="box_list_news_sub"]/div/ul/li[1]/h2/p/b/a/@href</link>
+			<title>//*[@id="box_list_news_sub"]/div/ul/li[1]/h2/p/b/a</title>
+			<image>//*[@id="box_list_news_sub"]/div/ul/li[1]/a/img/@src</image>
+			<date>//*[@id="box_list_news_sub"]/div/ul/li[1]/p[1]/span</date>
+			<description>//*[@id="box_list_news_sub"]/div/ul/li[1]/p[2]/text()</description>
+			<nextpage>//*[@id="pagination"]/ul/li[2]/a</nextpage>
+			<xpathnextpage>//*[@id="pagination"]/ul</xpathnextpage>
+		</item>
+		<item id="3" name="Chuyện màn ảnh > Góc nhìn" url="http://giaitri.vnexpress.net/tin-tuc/gioi-sao/trong-nuoc">
+			<xpathlayout>//*[@id="box_list_news_sub"]/div/ul/li</xpathlayout>
+			<link>//*[@id="box_list_news_sub"]/div/ul/li[1]/h2/p/b/a/@href</link>
+			<title>//*[@id="box_list_news_sub"]/div/ul/li[1]/h2/p/b/a</title>
+			<image>//*[@id="box_list_news_sub"]/div/ul/li[1]/a/img/@src</image>
+			<date>//*[@id="box_list_news_sub"]/div/ul/li[1]/p[1]/span</date>
+			<description>//*[@id="box_list_news_sub"]/div/ul/li[1]/p[2]/text()</description>
+			<nextpage>//*[@id="pagination"]/ul/li[2]/a</nextpage>
+			<xpathnextpage>//*[@id="pagination"]/ul</xpathnextpage>
+		</item>
+		<item id="4" name="Thời trang > Sao đẹp - Sao xấu" url="http://giaitri.vnexpress.net/tin-tuc/thoi-trang/sao-dep-sao-xau">
+			<xpathlayout>//*[@id="box_list_news_sub"]/div/ul/li</xpathlayout>
+			<link>//*[@id="box_list_news_sub"]/div/ul/li[1]/h2/p/b/a/@href</link>
+			<title>//*[@id="box_list_news_sub"]/div/ul/li[1]/h2/p/b/a</title>
+			<image>//*[@id="box_list_news_sub"]/div/ul/li[1]/a/img/@src</image>
+			<date>//*[@id="box_list_news_sub"]/div/ul/li[1]/p[1]/span</date>
+			<description>//*[@id="box_list_news_sub"]/div/ul/li[1]/p[2]/text()</description>
+			<nextpage>//*[@id="pagination"]/ul/li[2]/a</nextpage>
+			<xpathnextpage>//*[@id="pagination"]/ul</xpathnextpage>
+		</item>
+		<item id="5" name="Thời trang > Làng mốt" url="http://giaitri.vnexpress.net/tin-tuc/thoi-trang/sao-dep-sao-xau">
+			<xpathlayout>//*[@id="box_list_news_sub"]/div/ul/li</xpathlayout>
+			<link>//*[@id="box_list_news_sub"]/div/ul/li[1]/h2/p/b/a/@href</link>
+			<title>//*[@id="box_list_news_sub"]/div/ul/li[1]/h2/p/b/a</title>
+			<image>//*[@id="box_list_news_sub"]/div/ul/li[1]/a/img/@src</image>
+			<date>//*[@id="box_list_news_sub"]/div/ul/li[1]/p[1]/span</date>
+			<description>//*[@id="box_list_news_sub"]/div/ul/li[1]/p[2]/text()</description>
+			<nextpage>//*[@id="pagination"]/ul/li[2]/a</nextpage>
+			<xpathnextpage>//*[@id="pagination"]/ul</xpathnextpage>
+		</item>
+	</category>
+</_1241350_1241363_1241378_1241431>

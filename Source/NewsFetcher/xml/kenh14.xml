@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <_1241350_1241363_1241378_1241431>
 	<website>Kênh 14</website>
-	<url>http://kenh14.vn/</url>
+	<url>http://kenh14.vn</url>
 	<category count="1">
 		<item id="1" name="Fashion" url="http://kenh14.vn/fashion/trang-2.chn">
 			<xpathlayout>//*[@id="form1"]/div[5]/div/div/div[3]/div[1]/ul/li</xpathlayout>
