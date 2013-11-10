@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<_1241350_1241363_1241378_1241431>
+	<website>Thanh niên</website>
+	<url>http://www.thanhnien.com.vn</url>
+	<category count="6">
+		<item id="1" name="Chính trị xã hội" url="http://www.thanhnien.com.vn/pages/chinh-tri-xa-hoi.aspx">
+			<xpathlayout>//*[@id="divtoptin"]</xpathlayout>
+			<link>//*[@id="divtoptin"]/div[1]/a/@href</link>
+			<title>//*[@id="divtoptin"]/div[1]/a</title>
+			<image>//*[@id="divtoptin"]/div[2]/div[1]/a/img/@src</image>
+			<date>//*[@id="divtoptin"]/div[1]/span</date>
+			<description>//*[@id="divtoptin"]/div[2]/div[2]/text()</description>
+			<nextpage>//*[@id="ctl00_m_g_6000cd1a_7fe3_4098_b899_5e9f4034e834"]/div[2]/div[11]/div[2]/div[11]/div/a</nextpage>
+			<xpathnextpage>//*[@id="ctl00_m_g_6000cd1a_7fe3_4098_b899_5e9f4034e834"]/div[2]/div[11]/div[2]/div[11]/div</xpathnextpage>
+		</item>
+		<item id="2" name="Quốc phòng" url="http://www.thanhnien.com.vn/pages/quoc-phong.aspx">
+			<xpathlayout>//*[@id="divtoptin"]</xpathlayout>
+			<link>//*[@id="divtoptin"]/div[1]/a/@href</link>
+			<title>//*[@id="divtoptin"]/div[1]/a</title>
+			<image>//*[@id="divtoptin"]/div[2]/div[1]/a/img/@src</image>
+			<date>//*[@id="divtoptin"]/div[1]/span</date>
+			<description>//*[@id="divtoptin"]/div[2]/div[2]/text()</description>
+			<nextpage>//*[@id="ctl00_m_g_6eea32ca_02bc_4413_8ee2_f5b0ae49439d"]/div/div[11]/div[2]/div[11]/div/a</nextpage>
+			<xpathnextpage>//*[@id="ctl00_m_g_6eea32ca_02bc_4413_8ee2_f5b0ae49439d"]/div/div[11]/div[2]/div[11]/div</xpathnextpage>
+		</item>
+		<item id="3" name="Kinh tế" url="http://www.thanhnien.com.vn/pages/kinh-te.aspx">
+			<xpathlayout>//*[@id="divtoptin"]</xpathlayout>
+			<link>//*[@id="divtoptin"]/div[1]/a/@href</link>
+			<title>//*[@id="divtoptin"]/div[1]/a</title>
+			<image>//*[@id="divtoptin"]/div[2]/div[1]/a/img/@src</image>
+			<date>//*[@id="divtoptin"]/div[1]/span</date>
+			<description>//*[@id="divtoptin"]/div[2]/div[2]/text()</description>
+			<nextpage>//*[@id="ctl00_m_g_3295fb15_0b26_49d4_a191_d43feddd0c29"]/div[2]/div[11]/div[2]/div[11]/div/a</nextpage>
+			<xpathnextpage>//*[@id="ctl00_m_g_3295fb15_0b26_49d4_a191_d43feddd0c29"]/div[2]/div[11]/div[2]/div[11]/div</xpathnextpage>
+		</item>
+		<item id="4" name="Công nghệ thông tin" url="http://www.thanhnien.com.vn/pages/cong-nghe-thong-tin.aspx">
+			<xpathlayout>//*[@id="divtoptin"]</xpathlayout>
+			<link>//*[@id="divtoptin"]/div[1]/a/@href</link>
+			<title>//*[@id="divtoptin"]/div[1]/a</title>
+			<image>//*[@id="divtoptin"]/div[2]/div[1]/a/img/@src</image>
+			<date>//*[@id="divtoptin"]/div[1]/span</date>
+			<description>//*[@id="divtoptin"]/div[2]/div[2]/text()</description>
+			<nextpage>//*[@id="ctl00_m_g_59aabd2b_d261_4d52_bfeb_acc0a4a7754d"]/div/div[11]/div[2]/div[11]/div/a</nextpage>
+			<xpathnextpage>//*[@id="ctl00_m_g_59aabd2b_d261_4d52_bfeb_acc0a4a7754d"]/div/div[11]/div[2]/div[11]/div</xpathnextpage>
+		</item>
+		<item id="5" name="Khoa học" url="http://www.thanhnien.com.vn/pages/khoa-hoc.aspx">
+			<xpathlayout>//*[@id="divtoptin"]</xpathlayout>
+			<link>//*[@id="divtoptin"]/div[1]/a/@href</link>
+			<title>//*[@id="divtoptin"]/div[1]/a</title>
+			<image>//*[@id="divtoptin"]/div[2]/div[1]/a/img/@src</image>
+			<date>//*[@id="divtoptin"]/div[1]/span</date>
+			<description>//*[@id="divtoptin"]/div[2]/div[2]/text()</description>
+			<nextpage>//*[@id="ctl00_m_g_0a062011_9574_473c_a41f_2b24033d9859"]/div[2]/div[11]/div[2]/div[11]/div/a</nextpage>
+			<xpathnextpage>//*[@id="ctl00_m_g_0a062011_9574_473c_a41f_2b24033d9859"]/div[2]/div[11]/div[2]/div[11]/div</xpathnextpage>
+		</item>
+		<item id="6" name="Thư giãn" url="http://www.thanhnien.com.vn/pages/thu-gian.aspx">
+			<xpathlayout>//*[@id="divtoptin"]</xpathlayout>
+			<link>//*[@id="divtoptin"]/div[1]/a/@href</link>
+			<title>//*[@id="divtoptin"]/div[1]/a</title>
+			<image>//*[@id="divtoptin"]/div[2]/div[1]/a/img/@src</image>
+			<date>//*[@id="divtoptin"]/div[1]/span</date>
+			<description>//*[@id="divtoptin"]/div[2]/div[2]/text()</description>
+			<nextpage>//*[@id="ctl00_m_g_36019ef4_03aa_4899_ac8d_8026ca5ce542"]/div[2]/div[11]/div[2]/div[11]/div/a</nextpage>
+			<xpathnextpage>//*[@id="ctl00_m_g_36019ef4_03aa_4899_ac8d_8026ca5ce542"]/div[2]/div[11]/div[2]/div[11]/div</xpathnextpage>
+		</item>
+	</category>
+</_1241350_1241363_1241378_1241431>

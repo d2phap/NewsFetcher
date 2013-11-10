@@ -6,11 +6,13 @@ package newsfetcher;
 
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
-import java.io.BufferedReader;
-import java.io.File;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.sql.*;
+import java.io.*;
+import java.util.*;
+import org.jdom2.*;
+import org.jdom2.input.SAXBuilder;
+import org.jdom2.output.Format;
+import org.jdom2.output.XMLOutputter;
 
 /**
  *
@@ -27,7 +29,7 @@ public class DataProvider {
     }
     
     public DataProvider(String tenServer, String tenCSDL, int port, boolean isIntegratedSecurity, 
-            String user, String pass) {
+            String user, String pass, String k) {
         
         SQLServerDataSource ds = new SQLServerDataSource();
         ds.setIntegratedSecurity(isIntegratedSecurity);
@@ -47,27 +49,24 @@ public class DataProvider {
         }
     }
     
-    
+    /**
+     * Kết nối CSDL bằng tập tin config.xml
+     * @param _filename 
+     */
     public DataProvider(String _filename)
     {
-        File f = new File(_filename);
+        SAXBuilder saxBuilder = new SAXBuilder();
+
         try {
-            
-            //Đọc tất cả nội dung của file config
-            String strConnection = "";
-            
-            if(f.exists())
-            {
-                BufferedReader reader = Files.newBufferedReader(f.toPath(), StandardCharsets.UTF_8);
-                String line = null;                
-                
-                while((line = reader.readLine()) != null)
-                {
-                    strConnection = line;
-                    break;
-                }
-                reader.close();
-            }
+
+            Document document = saxBuilder.build(new File(_filename));
+
+            //TODO Lấy node root
+            // <_1241350_1241363_1241378_1241431>
+            Element rootNode = document.getRootElement();
+
+            //TODO Lấy nội dung connect string <con>
+            String strConnection = rootNode.getChildText("con");
             
             try {
                 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -78,8 +77,11 @@ public class DataProvider {
                 _isConnected = false;
             }
             
-        } catch (Exception ex) {
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
             _isConnected = false;
+            
         }
     }
 

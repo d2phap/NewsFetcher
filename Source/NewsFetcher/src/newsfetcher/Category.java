@@ -55,7 +55,7 @@ public class Category {
     public static Category getCategory(int id) throws Exception {
         Category cate = new Category();
         try {
-            DataProvider dp = new DataProvider("localhost", "dbNewsFetcher", 1433, true, "sa", "");
+            DataProvider dp = new DataProvider(".//config.xml");
             String sql = "";
             
             sql = "SELECT * FROM Category WHERE id = " + id;
@@ -93,7 +93,7 @@ public class Category {
     public static List<Category> getListCategory() throws Exception {
         List<Category> ls = new ArrayList<>();
         try {
-            DataProvider dp = new DataProvider("localhost", "dbNewsFetcher", 1433, true, "sa", "");
+            DataProvider dp = new DataProvider(".//config.xml");
             String sql = "";
             
             sql = "SELECT * FROM Category";
@@ -133,7 +133,7 @@ public class Category {
     public static List<Category> getListCategory(int websiteID) throws Exception {
         List<Category> ls = new ArrayList<>();
         try {
-            DataProvider dp = new DataProvider("localhost", "dbNewsFetcher", 1433, true, "sa", "");
+            DataProvider dp = new DataProvider(".//config.xml");
             String sql = "";
             
             sql = "SELECT * FROM Category WHERE WebsiteID = " + websiteID;
@@ -173,7 +173,7 @@ public class Category {
     public static int insertCategory(Category cate) throws Exception {
         int id = -1;
         try {
-            DataProvider dp = new DataProvider("localhost", "dbNewsFetcher", 1433, true, "sa", "");
+            DataProvider dp = new DataProvider(".//config.xml");
             String sql = "";
             
             sql = "INSERT INTO Category("
@@ -219,7 +219,7 @@ public class Category {
     public static boolean updateCategory(Category cate) throws Exception {
         boolean flag = false;
         try {
-            DataProvider dp = new DataProvider("localhost", "dbNewsFetcher", 1433, true, "sa", "");
+            DataProvider dp = new DataProvider(".//config.xml");
             String sql = "";
             
             sql = "UPDATE Category SET "
@@ -252,7 +252,7 @@ public class Category {
     public static boolean deleteCategory(int id) throws Exception {
         boolean flag = false;
         try {
-            DataProvider dp = new DataProvider("localhost", "dbNewsFetcher", 1433, true, "sa", "");
+            DataProvider dp = new DataProvider(".//config.xml");
             String sql = "";
             
             Content.deleteContentByCategoryId(id);
@@ -275,7 +275,7 @@ public class Category {
     public static boolean deleteCategoryByWebsiteId(int websiteId) throws Exception {
         boolean flag = false;
         try {
-            DataProvider dp = new DataProvider("localhost", "dbNewsFetcher", 1433, true, "sa", "");
+            DataProvider dp = new DataProvider(".//config.xml");
             String sql = "";
             
             List<Category> ls = Category.getListCategory(websiteId);

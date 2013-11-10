@@ -49,7 +49,7 @@ public class Content {
     public static Content getContent(int id) throws Exception {
         Content con = new Content();
         try {
-            DataProvider dp = new DataProvider("localhost", "dbNewsFetcher", 1433, true, "sa", "");
+            DataProvider dp = new DataProvider(".//config.xml");
             String sql = "";
             
             sql = "SELECT * FROM Content WHERE id = " + id;
@@ -74,7 +74,7 @@ public class Content {
     public static int getCountOfContentByCategoryId(int categoryID) throws Exception {
         int count = 0;
         try {
-            DataProvider dp = new DataProvider("localhost", "dbNewsFetcher", 1433, true, "sa", "");
+            DataProvider dp = new DataProvider(".//config.xml");
             String sql = "";
             
             sql = "SELECT COUNT(*) AS count FROM Content WHERE categoryID = " + categoryID;
@@ -97,7 +97,7 @@ public class Content {
     public static List<Content> getListContent() throws Exception {
         List<Content> ls = new ArrayList<>();
         try {
-            DataProvider dp = new DataProvider("localhost", "dbNewsFetcher", 1433, true, "sa", "");
+            DataProvider dp = new DataProvider(".//config.xml");
             String sql = "";
             
             sql = "SELECT * FROM Content";
@@ -130,7 +130,7 @@ public class Content {
     public static List<Content> getListContent(int categoryID) throws Exception {
         List<Content> ls = new ArrayList<>();
         try {
-            DataProvider dp = new DataProvider("localhost", "dbNewsFetcher", 1433, true, "sa", "");
+            DataProvider dp = new DataProvider(".//config.xml");
             String sql = "";
             
             sql = "SELECT * FROM Content WHERE categoryID = " + categoryID;
@@ -164,7 +164,7 @@ public class Content {
     public static List<Content> getListContent(int categoryID, int page) throws Exception {
         List<Content> ls = new ArrayList<>();
         try {
-            DataProvider dp = new DataProvider("localhost", "dbNewsFetcher", 1433, true, "sa", "");
+            DataProvider dp = new DataProvider(".//config.xml");
             String sql = "";
             
             int count = Content.getCountOfContentByCategoryId(categoryID);
@@ -173,7 +173,7 @@ public class Content {
             sql = "SELECT TOP(" + ROW_PER_PAGE + ") * " +
                   "FROM  " +
                   "(" +
-                  "SELECT * , ROW_NUMBER() OVER (ORDER BY date DESC) as num " +
+                  "SELECT * , ROW_NUMBER() OVER (ORDER BY id DESC) as num " +
                   "FROM Content " + 
                   "WHERE categoryID = " + categoryID +
                   ") AS a " +
@@ -208,7 +208,7 @@ public class Content {
     public static int insertContent (Content con) throws Exception {
         int id = -1;
         try {
-            DataProvider dp = new DataProvider("localhost", "dbNewsFetcher", 1433, true, "sa", "");
+            DataProvider dp = new DataProvider(".//config.xml");
             String sql = "";
             
             sql = "INSERT INTO Content ("
@@ -246,7 +246,7 @@ public class Content {
     public static boolean updateContent(Content con) throws Exception {
         boolean flag = false;
         try {
-            DataProvider dp = new DataProvider("localhost", "dbNewsFetcher", 1433, true, "sa", "");
+            DataProvider dp = new DataProvider(".//config.xml");
             String sql = "";
             
             sql = "UPDATE Content SET "
@@ -275,7 +275,7 @@ public class Content {
     public static boolean deleteContent(int id) throws Exception {
         boolean flag = false;
         try {
-            DataProvider dp = new DataProvider("localhost", "dbNewsFetcher", 1433, true, "sa", "");
+            DataProvider dp = new DataProvider(".//config.xml");
             String sql = "";
             
             sql = "DELETE FROM Content WHERE id = " + id;
@@ -296,7 +296,7 @@ public class Content {
     public static boolean deleteContentByCategoryId(int categoryId) throws Exception {
         boolean flag = false;
         try {
-            DataProvider dp = new DataProvider("localhost", "dbNewsFetcher", 1433, true, "sa", "");
+            DataProvider dp = new DataProvider(".//config.xml");
             String sql = "";
             
             sql = "DELETE FROM Content WHERE categoryID = " + categoryId;
@@ -318,7 +318,7 @@ public class Content {
     public static boolean isExisted(String url, int catID, int webID) {
         
         try {
-            DataProvider dp = new DataProvider("localhost", "dbNewsFetcher", 1433, true, "sa", "");
+            DataProvider dp = new DataProvider(".//config.xml");
             String sql = "";
             
             sql = "SELECT * " +

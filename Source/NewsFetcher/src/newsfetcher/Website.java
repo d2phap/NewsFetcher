@@ -35,7 +35,7 @@ public class Website {
     public static int insertWebsite(Website website) throws Exception {
         int id = -1;
         try {
-            DataProvider dp = new DataProvider("localhost", "dbNewsFetcher", 1433, true, "sa", "");
+            DataProvider dp = new DataProvider(".//config.xml");
             String sql = "";
             
             sql = "INSERT INTO Website (name, url) VALUES (N'" + website._name + "', '" + website._url + "')";
@@ -61,7 +61,7 @@ public class Website {
         boolean flag = false;
         
         try {
-            DataProvider dp = new DataProvider("localhost", "dbNewsFetcher", 1433, true, "sa", "");
+            DataProvider dp = new DataProvider(".//config.xml");
             String sql = "";
             
             sql = "UPDATE Website SET "
@@ -87,7 +87,7 @@ public class Website {
     public static boolean deleteWebsite(int id) throws Exception {
         boolean flag = false;
         try {
-            DataProvider dp = new DataProvider("localhost", "dbNewsFetcher", 1433, true, "sa", "");
+            DataProvider dp = new DataProvider(".//config.xml");
             String sql = "";
             
             Category.deleteCategoryByWebsiteId(id);
@@ -110,7 +110,7 @@ public class Website {
     public static Website getWebsite(int id) throws Exception {
         Website web = new Website();
         try {
-            DataProvider dp = new DataProvider("localhost", "dbNewsFetcher", 1433, true, "sa", "");
+            DataProvider dp = new DataProvider(".//config.xml");
             String sql = "";
             
             sql = "SELECT * FROM Website WHERE id = " + id;
@@ -137,7 +137,7 @@ public class Website {
     public static List<Website> getListWebsite() throws Exception {
         List<Website> ls = new ArrayList<>();
         try {
-            DataProvider dp = new DataProvider("localhost", "dbNewsFetcher", 1433, true, "sa", "");
+            DataProvider dp = new DataProvider(".//config.xml");
             String sql = "";
             
             sql = "SELECT * FROM Website";

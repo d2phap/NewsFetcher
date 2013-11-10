@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<_1241350_1241363_1241378_1241431>
+	<con>jdbc:sqlserver://localhost:1433;databaseName=dbNewsFetcher;integratedSecurity=true</con>
+</_1241350_1241363_1241378_1241431>
