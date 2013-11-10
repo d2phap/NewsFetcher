@@ -6,13 +6,18 @@ package newsfetcher;
 
 /*import com.sun.xml.internal.fastinfoset.stax.factory.StAXInputFactory;
 import com.sun.xml.internal.stream.XMLInputFactoryImpl;*/
+import java.awt.BorderLayout;
 import java.awt.Cursor;
+import java.awt.Desktop;
+import java.awt.Image;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.net.URI;
 import java.net.URL;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -25,6 +30,8 @@ import java.util.logging.Logger;
 import javax.swing.UIManager;
 
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
@@ -179,13 +186,6 @@ public class frmMain extends javax.swing.JFrame {
 
         jLabel4.setText("Chuyên mục:");
 
-        cmbChuyenMuc.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                PAGE_NUM = 1;
-                LoadDanhSachBaiViet();
-            }
-        });
-
         btnThemTrangWeb.setText("Thêm trang mới");
         btnThemTrangWeb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -282,6 +282,12 @@ public class frmMain extends javax.swing.JFrame {
         jlbTitle.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jlbTitle.setForeground(new java.awt.Color(0, 153, 204));
         jlbTitle.setText("Article Title");
+        jlbTitle.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        jlbTitle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlbTitleMouseClicked(evt);
+            }
+        });
 
         jlbImage.setMaximumSize(new java.awt.Dimension(100, 100));
         jlbImage.setMinimumSize(new java.awt.Dimension(100, 100));
@@ -319,11 +325,11 @@ public class frmMain extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jlbImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 568, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jlbTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jlbDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jlbDate, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -360,6 +366,7 @@ public class frmMain extends javax.swing.JFrame {
             }
         });
 
+        jlbTrang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlbTrang.setText("1/~");
 
         btnXoaBaiViet.setText("Xoá bài viết");
@@ -400,15 +407,17 @@ public class frmMain extends javax.swing.JFrame {
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
 
+        jScrollPane2.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+
         jtbContent.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         jtbContent.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -507,18 +516,20 @@ public class frmMain extends javax.swing.JFrame {
     private void jtbContentSelectionChange(ListSelectionEvent e)
     {
         try {
-            
-            int selectedId = jtbContent.getSelectedRow();
-            int categoryId = Integer.parseInt(jtbContent.getValueAt(selectedId, 0).toString());
-            LoadContentDetail(selectedId);
-            
+            if (jtbContent.getSelectedRow() != -1) {
+                int selectedId = jtbContent.getSelectedRow();
+                int categoryId = Integer.parseInt(jtbContent.getValueAt(selectedId, 0).toString());
+                LoadContentDetail(selectedId);
+            }
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.toString());
+            //JOptionPane.showMessageDialog(null, ex.toString());
+            ex.printStackTrace();
         }
     }
     
     private void btnXemTinTucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXemTinTucActionPerformed
-        
+        PAGE_NUM = 1;
+        LoadDanhSachBaiViet();
     }//GEN-LAST:event_btnXemTinTucActionPerformed
 
     private void btnThemTrangWebActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemTrangWebActionPerformed
@@ -539,11 +550,16 @@ public class frmMain extends javax.swing.JFrame {
     private void btnXoaTrangWebActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaTrangWebActionPerformed
         
         try {
-            int idx = cmbTrangWeb.getSelectedIndex();
-            int webID = listWebsite.get(idx)._id;
             
-            Website.deleteWebsite(webID);
-            LoadDanhSachTrang();
+            if(JOptionPane.showConfirmDialog(this, "Xác nhận xoá trang web này?", "Xác nhận", 
+                    JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+            {
+                int idx = cmbTrangWeb.getSelectedIndex();
+                int webID = listWebsite.get(idx)._id;
+
+                Website.deleteWebsite(webID);
+                LoadDanhSachTrang();
+            }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -569,7 +585,7 @@ public class frmMain extends javax.swing.JFrame {
 
     private void jbtnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPrevActionPerformed
         // TODO add your handling code here:
-        
+        jbtnNext.setEnabled(true);
         if (PAGE_NUM <= 1) {
             jbtnPrev.setEnabled(false);
             return;
@@ -578,24 +594,32 @@ public class frmMain extends javax.swing.JFrame {
             LoadDanhSachBaiViet();
         }
         
-        
+        System.out.println(PAGE_NUM);
         
     }//GEN-LAST:event_jbtnPrevActionPerformed
 
     private void jbtnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnNextActionPerformed
         // TODO add your handling code here:
         jbtnPrev.setEnabled(true);
+        
         if (PAGE_NUM >= TOTAL_PAGES) {
             jbtnNext.setEnabled(false);
             return;
+        } else {
+            PAGE_NUM++;
+            LoadDanhSachBaiViet();
         }
-        
+        System.out.println(PAGE_NUM);
     }//GEN-LAST:event_jbtnNextActionPerformed
 
     private void btnXoaBaiVietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaBaiVietActionPerformed
-        
-        
+        XoaBaiViet();
     }//GEN-LAST:event_btnXoaBaiVietActionPerformed
+
+    private void jlbTitleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbTitleMouseClicked
+        // TODO add your handling code here:
+        OpenLink();
+    }//GEN-LAST:event_jlbTitleMouseClicked
 
 
     
@@ -659,7 +683,7 @@ public class frmMain extends javax.swing.JFrame {
                 Content con = new Content();
                 con = listContent.get(i);
                 
-                item.add(i+1);
+                item.add(((PAGE_NUM - 1) * ROW_PER_PAGE) + i + 1);
                 item.add(con._title);
                 
                 defaultTable.addRow(item);
@@ -667,7 +691,7 @@ public class frmMain extends javax.swing.JFrame {
             
             jtbContent.setModel(defaultTable);
         } catch (Exception ex) {
-            
+            ex.printStackTrace();
         }
     }
     
@@ -679,17 +703,49 @@ public class frmMain extends javax.swing.JFrame {
             jlbDate.setText(con._date);
             jtxtContent.setText(con._description);
             
+            Image image = null;
             URL url = new URL(con._image);
-            BufferedImage buff = ImageIO.read(url);
+            image = ImageIO.read(url);
             
-            ImagePanel imgPan = new ImagePanel(buff);
-            imgPan.paintComponent(imgPan.getGraphics());
+            
+            jlbImage = new ImagePanel((BufferedImage) image);
+            jlbImage.paintComponents(image.getGraphics());
+            jlbImage.setBounds(new Rectangle(12,  17,  128,  128));
+            JFrame frame = new JFrame();
+            frame.getContentPane().add(jlbImage, BorderLayout.CENTER);
+            frame.setSize(300, 400);
+            frame.setVisible(true);
+            
             
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
     
+    private void XoaBaiViet() {
+        try {
+            int idx = jtbContent.getSelectedRow();
+            int contentID = listContent.get(idx)._id;
+            
+            Content.deleteContent(contentID);
+            LoadDanhSachBaiViet();
+            LoadContentDetail(0);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    private void OpenLink() {
+        try {
+            int idx = jtbContent.getSelectedRow();
+            String link = listContent.get(idx)._link;
+            
+            Desktop.getDesktop().browse(new URI(link));
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
     
     /**
      * @param args the command line arguments

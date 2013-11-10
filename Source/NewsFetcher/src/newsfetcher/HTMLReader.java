@@ -282,13 +282,18 @@ public class HTMLReader extends Thread implements EventListener {
                     x = expression + catTemp._title;
                     node = (NodeList) xpath.evaluate(x, docNew, XPathConstants.NODESET);
                     co._title = StringEscapeUtils.unescapeHtml4(node.item(0).getTextContent());
-                    co._title = co._title.replaceAll("'", "");
-                    
+                    co._title = co._title.replaceAll("'", "\"");
+                                        
                     //Lay noi dung cua image
                     x = expression + catTemp._image;
                     node = (NodeList) xpath.evaluate(x, docNew, XPathConstants.NODESET);
                     if (node.getLength() > 0) {
                         co._image = StringEscapeUtils.unescapeHtml4(node.item(0).getTextContent());
+                        
+                        if(co._image.substring(0, 4).compareTo("http") != 0)
+                        {
+                            co._image = _webUrl + co._image;
+                        }
                     }
 
                     //Lay noi dung cua date
@@ -296,7 +301,7 @@ public class HTMLReader extends Thread implements EventListener {
                     node = (NodeList) xpath.evaluate(x, docNew, XPathConstants.NODESET);
                     if (node.getLength() > 0) {
                         co._date = StringEscapeUtils.unescapeHtml4(node.item(0).getTextContent());
-                        co._date = co._date.replaceAll("'", "");
+                        co._date = co._date.replaceAll("'", "\"");
                     }
 
                     //Lay noi dung cua description
@@ -304,7 +309,7 @@ public class HTMLReader extends Thread implements EventListener {
                     node = (NodeList) xpath.evaluate(x, docNew, XPathConstants.NODESET);
                     if (node.getLength() > 0) {
                         co._description = StringEscapeUtils.unescapeHtml4(node.item(0).getTextContent());
-                        co._description = co._description.replaceAll("'", "");
+                        co._description = co._description.replaceAll("'", "\"");
                     }
 
                     //Them bai viet vua lay duoc vao danh sach
