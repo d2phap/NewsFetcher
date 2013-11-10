@@ -226,7 +226,7 @@ public class frmLayTin extends javax.swing.JFrame {
             html.start();
 
         } catch (Exception ex) {
-            lblStatus.setText("Có lỗi trong quá trình thực hiện");
+            lblStatus.setText(ex.getMessage());
             btnBatDau.setEnabled(true);
             txtSoTrang.setEnabled(true);
         }

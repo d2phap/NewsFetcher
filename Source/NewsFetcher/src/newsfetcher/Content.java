@@ -15,6 +15,8 @@ import java.util.List;
  */
 public class Content {
     
+    public static int ROW_PER_PAGE = 20;
+    
     public int _id;
     public int _categoryID;
     
@@ -67,6 +69,24 @@ public class Content {
             throw ex;
         }
         return con;
+    }
+    
+    public static int getCountOfContentByCategoryId(int categoryID) throws Exception {
+        int count = 0;
+        try {
+            DataProvider dp = new DataProvider("localhost", "dbNewsFetcher", 1433, true, "sa", "");
+            String sql = "";
+            
+            sql = "SELECT COUNT(*) AS count FROM Content WHERE categoryID = " + categoryID;
+            ResultSet rs = dp.ExecuteQuery(sql);
+            if (rs.next()) {
+                count = rs.getInt("count");
+            }
+            
+        } catch (Exception ex) {
+            throw ex;
+        }
+        return count;
     }
     
     /**
@@ -133,6 +153,51 @@ public class Content {
         }
         return ls;
     }
+    
+    /**
+     * 
+     * @param categoryID
+     * @param page
+     * @return
+     * @throws Exception 
+     */
+    public static List<Content> getListContent(int categoryID, int page) throws Exception {
+        List<Content> ls = new ArrayList<>();
+        try {
+            DataProvider dp = new DataProvider("localhost", "dbNewsFetcher", 1433, true, "sa", "");
+            String sql = "";
+            
+            int count = Content.getCountOfContentByCategoryId(categoryID);
+            int start = ROW_PER_PAGE * (page - 1);
+            
+            sql = "SELECT TOP(" + ROW_PER_PAGE + ") * " +
+                  "FROM  " +
+                  "(" +
+                  "SELECT * , ROW_NUMBER() OVER (ORDER BY date DESC) as num " +
+                  "FROM Content " + 
+                  "WHERE categoryID = " + categoryID +
+                  ") AS a " +
+                  "WHERE num > " + start;
+            ResultSet rs = dp.ExecuteQuery(sql);
+            
+            while(rs.next()) {
+                Content con = new Content();
+                con._id = rs.getInt("id");
+                con._categoryID = rs.getInt("categoryID");
+                con._link = rs.getString("link");
+                con._title = rs.getString("title");
+                con._image = rs.getString("image");
+                con._date = rs.getString("date");
+                con._description = rs.getString("description");
+                con._nextpage = rs.getString("nextpage");
+                ls.add(con);
+            }
+        } catch (Exception ex) {
+            throw ex;
+        }
+        return ls;
+    }
+    
     
     /**
      * Thêm bài viết

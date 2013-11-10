@@ -11,6 +11,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.net.URL;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -19,6 +22,12 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.UIManager;
+
+import javax.imageio.ImageIO;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
+
 import javax.swing.UIManager;
 
 /**
@@ -32,13 +41,20 @@ public class frmMain extends javax.swing.JFrame {
      */
     public List<Website> listWebsite;
     public List<Category> listCategory;
+    public List<Content> listContent;
     
+    private int MAX_NUM_OF_CONTENT = 0;
+    private int ROW_PER_PAGE = 20;
+    private int PAGE_NUM = 1;
+    private int COUNT_ARTICLE = 0;
+    private int TOTAL_PAGES = 0;
     /**
      * Creates new form frmMain
      */
     public frmMain() {
         initComponents();
         LoadDanhSachTrang();
+        jbtnPrev.setEnabled(false);
     }
     
     DataProvider dp = null;
@@ -68,8 +84,20 @@ public class frmMain extends javax.swing.JFrame {
         btnXemTinTuc = new javax.swing.JButton();
         btnLayTin = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jlbTitle = new javax.swing.JLabel();
+        jlbImage = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        txtTest = new javax.swing.JTextArea();
+        jtxtContent = new javax.swing.JTextArea();
+        jlbDate = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jbtnPrev = new javax.swing.JButton();
+        jbtnNext = new javax.swing.JButton();
+        jlbTrang = new javax.swing.JLabel();
+        btnXoaBaiViet = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jtbContent = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("News Fetcher");
@@ -148,6 +176,13 @@ public class frmMain extends javax.swing.JFrame {
         });
 
         jLabel4.setText("Chuyên mục:");
+
+        cmbChuyenMuc.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                PAGE_NUM = 1;
+                LoadDanhSachBaiViet();
+            }
+        });
 
         btnThemTrangWeb.setText("Thêm trang mới");
         btnThemTrangWeb.addActionListener(new java.awt.event.ActionListener() {
@@ -238,27 +273,165 @@ public class frmMain extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jPanel3.setLayout(new java.awt.BorderLayout());
 
-        txtTest.setColumns(20);
-        txtTest.setRows(5);
-        jScrollPane1.setViewportView(txtTest);
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        jlbTitle.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jlbTitle.setForeground(new java.awt.Color(0, 153, 204));
+        jlbTitle.setText("Article Title");
+
+        jlbImage.setMaximumSize(new java.awt.Dimension(100, 100));
+        jlbImage.setMinimumSize(new java.awt.Dimension(100, 100));
+
+        javax.swing.GroupLayout jlbImageLayout = new javax.swing.GroupLayout(jlbImage);
+        jlbImage.setLayout(jlbImageLayout);
+        jlbImageLayout.setHorizontalGroup(
+            jlbImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jlbImageLayout.setVerticalGroup(
+            jlbImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jtxtContent.setEditable(false);
+        jtxtContent.setColumns(20);
+        jtxtContent.setRows(5);
+        jtxtContent.setLineWrap(true);
+        jtxtContent.setWrapStyleWord(true);
+        jtxtContent.setAutoscrolls(false);
+        jScrollPane1.setViewportView(jtxtContent);
+
+        jlbDate.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlbDate.setText("10/09/2013");
+        jlbDate.setToolTipText("");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 674, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jlbImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 568, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jlbTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jlbDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlbTitle)
+                    .addComponent(jlbDate))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jlbImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 4, Short.MAX_VALUE)))
                 .addContainerGap())
         );
+
+        jPanel3.add(jPanel5, java.awt.BorderLayout.PAGE_START);
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+
+        jbtnPrev.setText("Trang trước");
+        jbtnPrev.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnPrevActionPerformed(evt);
+            }
+        });
+
+        jbtnNext.setText("Trang sau");
+        jbtnNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnNextActionPerformed(evt);
+            }
+        });
+
+        jlbTrang.setText("1/~");
+
+        btnXoaBaiViet.setText("Xoá bài viết");
+        btnXoaBaiViet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaBaiVietActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jbtnPrev)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jlbTrang, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbtnNext)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 365, Short.MAX_VALUE)
+                .addComponent(btnXoaBaiViet)
+                .addContainerGap())
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbtnPrev)
+                    .addComponent(jbtnNext)
+                    .addComponent(jlbTrang)
+                    .addComponent(btnXoaBaiViet))
+                .addContainerGap())
+        );
+
+        jPanel3.add(jPanel6, java.awt.BorderLayout.PAGE_END);
+
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+
+        jtbContent.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jtbContent.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtbContentMouseClicked(evt);
+            }
+        });
+        jtbContent.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane2.setViewportView(jtbContent);
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 674, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+        );
+
+        jPanel3.add(jPanel7, java.awt.BorderLayout.CENTER);
 
         jPanel4.add(jPanel3, java.awt.BorderLayout.CENTER);
 
@@ -309,11 +482,16 @@ public class frmMain extends javax.swing.JFrame {
     }//GEN-LAST:event_lblThongTinPhanMemMouseExited
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
         // TODO add your handling code here:
         //dp = new DataProvider("./app.config");
-        dp = new DataProvider("localhost", "dbNewsFetcher", 1433, true, "sa", "");
-        //JOptionPane.showMessageDialog(this, "Kết nối CSDL: " + dp.isConnected());
+        
+        File dir = new File(".\\xml");
+        
+        if(!dir.exists())
+        {
+            dir.mkdir();
+        }
+        
     }//GEN-LAST:event_formWindowOpened
 
     private void btnXemTinTucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXemTinTucActionPerformed
@@ -351,79 +529,6 @@ public class frmMain extends javax.swing.JFrame {
     private void btnLayTinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLayTinActionPerformed
         
         try {
-            /*
-            List<Category> categories = new ArrayList<>();
-            Category cat = new Category();
-            
-            
-            cat._id = 20;
-            cat._websiteID = 6;
-            cat._name = "Quốc tế";
-            cat._url = "http://nld.com.vn/thoi-su-quoc-te.htm";
-            cat._xpathLayout = "//*[@id=\"content\"]/div[1]/div[3]/div[2]/div";
-            
-            cat._link = "//*[@id=\"content\"]/div[1]/div[3]/div[2]/div[1]/h3/a/@href";
-            cat._title = "//*[@id=\"content\"]/div[1]/div[3]/div[2]/div[1]/h3/a";
-            cat._image = "//*[@id=\"content\"]/div[1]/div[3]/div[2]/div[1]/a/img/@src";
-            cat._date = "//*[@id=\"content\"]/div[1]/div[3]/div[2]/div[1]/p[1]";
-            cat._description = "//*[@id=\"content\"]/div[1]/div[3]/div[2]/div[1]/p[2]";
-            cat._nextpage = "//*[@id=\"content\"]/div[1]/div[3]/div[2]/div[11]/a[2]";
-            cat._xpathNextPage = "//*[@id=\"content\"]/div[1]/div[3]/div[2]/div[11]";
-            
-            /*
-            cat._id = 19;
-            cat._websiteID = 5;
-            cat._name = "Du học";
-            cat._url = "http://ione.vnexpress.net/tin-tuc/hoc-duong/du-hoc";
-            cat._xpathLayout = "//*[@id=\"ione_tinnoibat_khac\"]/div";
-            cat._link = "//*[@id=\"ione_tinnoibat_khac\"]/div/div[2]/h3/a/@href";
-            cat._title = "//*[@id=\"ione_tinnoibat_khac\"]/div/div[2]/h3/a";
-            cat._image = "//*[@id=\"ione_tinnoibat_khac\"]/div/div[2]/div/a/img/@src";
-            cat._date = "//*[@id=\"ione_tinnoibat_khac\"]/div/div[1]/div[1]";
-            cat._description = "//*[@id=\"ione_tinnoibat_khac\"]/div/div[2]/p";
-            cat._nextpage = "//*[@id=\"contain\"]/div[3]/div[1]/div[2]/ul/li[2]/a";
-            cat._xpathNextPage = "//*[@id=\"contain\"]/div[3]/div[1]/div[2]/ul";
-            
-            /*
-            cat._id = 18;
-            cat._websiteID = 4;
-            cat._name = "Fashion";
-            cat._url = "http://kenh14.vn/fashion/trang-2.chn";
-            cat._xpathLayout = "//*[@id=\"form1\"]/div[5]/div/div/div[3]/div[1]/ul/li";
-            cat._link = "//*[@id=\"form1\"]/div[5]/div/div/div[3]/div[2]/ul/li[1]/h2/a/@href";
-            cat._title = "//*[@id=\"form1\"]/div[5]/div/div/div[3]/div[1]/ul/li[1]/h2/a";
-            cat._image = "//*[@id=\"form1\"]/div[5]/div/div/div[3]/div[1]/ul/li[1]/a/img/@src";
-            cat._date = "//*[@id=\"form1\"]/div[5]/div/div/div[3]/div[1]/ul/li[1]/p[1]/span/@title";
-            cat._description = "//*[@id=\"form1\"]/div[5]/div/div/div[3]/div[1]/ul/li[1]/p[2]/text()";
-            cat._nextpage = "//*[@id=\"form1\"]/div[5]/div/div/div[3]/div[2]/a[3]";
-            cat._xpathNextPage = "//*[@id=\"form1\"]/div[5]/div/div/div[3]/div[2]";
-            
-            /*
-            cat._name = "Chính trị xã hội";
-            cat._url = "http://www.thanhnien.com.vn/pages/chinh-tri-xa-hoi.aspx";
-            cat._xpathLayout = "//*[@id=\"divtoptin\"]";
-            cat._link = "//*[@id=\"divtoptin\"]/div[1]/a/@href";
-            cat._title = "//*[@id=\"divtoptin\"]/div[1]/a";
-            cat._image = "//*[@id=\"divtoptin\"]/div[2]/div[1]/a/img/@src";
-            cat._date = "//*[@id=\"divtoptin\"]/div[1]/span";
-            cat._description = "//*[@id=\"divtoptin\"]/div[2]/div[2]/text()";
-            cat._nextpage = "//*[@id=\"ctl00_m_g_6000cd1a_7fe3_4098_b899_5e9f4034e834\"]/div[2]/div[11]/div[2]/div[11]/div/a";
-            cat._xpathNextPage = "//*[@id=\"ctl00_m_g_6000cd1a_7fe3_4098_b899_5e9f4034e834\"]/div[2]/div[11]/div[2]/div[11]/div";
-            */
-            
-            //categories.add(cat);
-            /*
-            Website web = new Website();
-            web._name = "Người lao động";
-            web._url = "http://nld.com.vn";
-            web._categories = categories;
-            */
-            
-            
-            //HTMLReader html = new HTMLReader(new URL(cat._url));
-            //List<Content> dsBaiViet = html.getTextContent(html.getDocument(), cat);
-            //List<Content> ds = html.fetchNews2(web._url, cat, 4);
-            
             
             Website web = listWebsite.get(cmbTrangWeb.getSelectedIndex());
             Category cat = listCategory.get(cmbChuyenMuc.getSelectedIndex());
@@ -432,27 +537,56 @@ public class frmMain extends javax.swing.JFrame {
             frmLayTin f = new frmLayTin(web, cat);
             f.setVisible(true);
             
-            /*
-            txtTest.setText(" ");
-            
-            for (int i = 0; i < ds.size(); i++) 
-            {
-                String re = "";
-                
-                re += "Title = " + ds.get(i)._title + "\n";
-                re += "Link = " + ds.get(i)._link + "\n";                
-                re += "Date = " + ds.get(i)._date + "\n";
-                re += "Image = " + ds.get(i)._image + "\n";
-                re += "Description = " + ds.get(i)._description + "\n\n\n";
-                
-                txtTest.setText(txtTest.getText() + re);
-            }
-            */
             
         } catch (Exception ex) {
             Logger.getLogger(frmMain.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnLayTinActionPerformed
+
+
+    private void jtbContentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtbContentMouseClicked
+        // TODO add your handling code here:
+        
+        try {
+            int selectedId = jtbContent.getSelectedRow();
+            int categoryId = Integer.parseInt(jtbContent.getValueAt(selectedId, 0).toString()); 
+            LoadContentDetail(selectedId);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+        
+    }//GEN-LAST:event_jtbContentMouseClicked
+
+    private void jbtnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPrevActionPerformed
+        // TODO add your handling code here:
+        
+        if (PAGE_NUM <= 1) {
+            jbtnPrev.setEnabled(false);
+            return;
+        } else {
+            PAGE_NUM--;
+            LoadDanhSachBaiViet();
+        }
+        
+        
+        
+    }//GEN-LAST:event_jbtnPrevActionPerformed
+
+    private void jbtnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnNextActionPerformed
+        // TODO add your handling code here:
+        jbtnPrev.setEnabled(true);
+        if (PAGE_NUM >= TOTAL_PAGES) {
+            jbtnNext.setEnabled(false);
+            return;
+        }
+        
+    }//GEN-LAST:event_jbtnNextActionPerformed
+
+    private void btnXoaBaiVietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaBaiVietActionPerformed
+        
+        
+    }//GEN-LAST:event_btnXoaBaiVietActionPerformed
+
 
     
     /**
@@ -489,7 +623,62 @@ public class frmMain extends javax.swing.JFrame {
         }
     }
     
+    private void LoadDanhSachBaiViet() {
+        try {
+            int idx = cmbChuyenMuc.getSelectedIndex();
+            int id = listCategory.get(idx)._id;
+            
+            COUNT_ARTICLE = Content.getCountOfContentByCategoryId(id);
+            TOTAL_PAGES = (int)Math.ceil(COUNT_ARTICLE * 1.0/ ROW_PER_PAGE);
+            
+            jlbTrang.setText(PAGE_NUM + "/" + TOTAL_PAGES);
+            
+            listContent = Content.getListContent(id, PAGE_NUM);
+            
+            String tableCol[] = {"STT", "Bài viết"};
+            DefaultTableModel defaultTable = new DefaultTableModel(tableCol, 0) {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    return false;
+                }
+            };
+            
+            for (int i = 0; i < listContent.size(); i++) {
+                Vector item;
+                item = new Vector();
+                Content con = new Content();
+                con = listContent.get(i);
+                
+                item.add(i+1);
+                item.add(con._title);
+                
+                defaultTable.addRow(item);
+            }
+            
+            jtbContent.setModel(defaultTable);
+        } catch (Exception ex) {
+            
+        }
+    }
     
+    private void LoadContentDetail(int selectedId) {
+        try {
+            Content con = listContent.get(selectedId);
+            
+            jlbTitle.setText(con._title);
+            jlbDate.setText(con._date);
+            jtxtContent.setText(con._description);
+            
+            URL url = new URL(con._image);
+            BufferedImage buff = ImageIO.read(url);
+            
+            ImagePanel imgPan = new ImagePanel(buff);
+            imgPan.paintComponent(imgPan.getGraphics());
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
     
     
     /**
@@ -531,6 +720,7 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JButton btnLayTin;
     private javax.swing.JButton btnThemTrangWeb;
     private javax.swing.JButton btnXemTinTuc;
+    private javax.swing.JButton btnXoaBaiViet;
     private javax.swing.JButton btnXoaTrangWeb;
     private javax.swing.JComboBox cmbChuyenMuc;
     private javax.swing.JComboBox cmbTrangWeb;
@@ -542,10 +732,23 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton jbtnNext;
+    private javax.swing.JButton jbtnPrev;
+    private javax.swing.JLabel jlbDate;
+    private javax.swing.JPanel jlbImage;
+    private javax.swing.JLabel jlbTitle;
+    private javax.swing.JLabel jlbTrang;
+    private javax.swing.JTable jtbContent;
+    private javax.swing.JTextArea jtxtContent;
     private javax.swing.JLabel lblThongTinPhanMem;
-    private javax.swing.JTextArea txtTest;
     // End of variables declaration//GEN-END:variables
+
+    
 
 
     
