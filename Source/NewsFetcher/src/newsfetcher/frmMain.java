@@ -29,6 +29,8 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import javax.swing.UIManager;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 /**
  *
@@ -409,11 +411,6 @@ public class frmMain extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jtbContent.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jtbContentMouseClicked(evt);
-            }
-        });
         jtbContent.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         jScrollPane2.setViewportView(jtbContent);
 
@@ -492,8 +489,34 @@ public class frmMain extends javax.swing.JFrame {
             dir.mkdir();
         }
         
+        ListSelectionModel ls = jtbContent.getSelectionModel();
+        ls.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                jtbContentSelectionChange(e);
+            }
+        });
+        
+        
     }//GEN-LAST:event_formWindowOpened
 
+    /**
+     * Sự kiện chọn item trên table
+     * @param e 
+     */
+    private void jtbContentSelectionChange(ListSelectionEvent e)
+    {
+        try {
+            
+            int selectedId = jtbContent.getSelectedRow();
+            int categoryId = Integer.parseInt(jtbContent.getValueAt(selectedId, 0).toString());
+            LoadContentDetail(selectedId);
+            
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+    }
+    
     private void btnXemTinTucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXemTinTucActionPerformed
         
     }//GEN-LAST:event_btnXemTinTucActionPerformed
@@ -543,19 +566,6 @@ public class frmMain extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnLayTinActionPerformed
 
-
-    private void jtbContentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtbContentMouseClicked
-        // TODO add your handling code here:
-        
-        try {
-            int selectedId = jtbContent.getSelectedRow();
-            int categoryId = Integer.parseInt(jtbContent.getValueAt(selectedId, 0).toString()); 
-            LoadContentDetail(selectedId);
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.toString());
-        }
-        
-    }//GEN-LAST:event_jtbContentMouseClicked
 
     private void jbtnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPrevActionPerformed
         // TODO add your handling code here:

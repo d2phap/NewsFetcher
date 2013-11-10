@@ -524,9 +524,6 @@
                           </Table>
                         </Property>
                       </Properties>
-                      <Events>
-                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jtbContentMouseClicked"/>
-                      </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="jtbContent.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);"/>
                       </AuxValues>
