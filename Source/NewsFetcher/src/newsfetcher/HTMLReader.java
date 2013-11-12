@@ -203,21 +203,40 @@ public class HTMLReader extends Thread implements EventListener {
         String expression = catTemp._xpathLayout;
 
         //Loc ra xpath cua tung thuoc tinh
-        catTemp._link = catTemp._link.substring(expression.length());
-        catTemp._link = catTemp._link.substring(catTemp._link.indexOf("/"));
+        try {
+            catTemp._link = catTemp._link.substring(expression.length());
+            catTemp._link = catTemp._link.substring(catTemp._link.indexOf("/"));
+        } catch (Exception ex) {
+            catTemp._link = "/abcdef";
+        }
 
-        catTemp._image = catTemp._image.substring(expression.length());
-        catTemp._image = catTemp._image.substring(catTemp._image.indexOf("/"));
+        try {
+            catTemp._image = catTemp._image.substring(expression.length());
+            catTemp._image = catTemp._image.substring(catTemp._image.indexOf("/"));
+        } catch (Exception ex) {
+            catTemp._image = "/abcdef";
+        }
 
-        catTemp._title = catTemp._title.substring(expression.length());
-        catTemp._title = catTemp._title.substring(catTemp._title.indexOf("/"));
+        try {
+            catTemp._title = catTemp._title.substring(expression.length());
+            catTemp._title = catTemp._title.substring(catTemp._title.indexOf("/"));
+        } catch (Exception ex) {
+            catTemp._title = "/abcdef";
+        }
 
-        catTemp._date = catTemp._date.substring(expression.length());
-        catTemp._date = catTemp._date.substring(catTemp._date.indexOf("/"));
+        try {
+            catTemp._date = catTemp._date.substring(expression.length());
+            catTemp._date = catTemp._date.substring(catTemp._date.indexOf("/"));
+        } catch (Exception ex) {
+            catTemp._date = "/abcdef";
+        }
 
-        catTemp._description = catTemp._description.substring(expression.length());
-        catTemp._description = catTemp._description.substring(catTemp._description.indexOf("/"));
-
+        try {
+            catTemp._description = catTemp._description.substring(expression.length());
+            catTemp._description = catTemp._description.substring(catTemp._description.indexOf("/"));
+        } catch (Exception ex) {
+            catTemp._description = "/abcdef";
+        }
 
         try {
             //Lay danh sach bai viet

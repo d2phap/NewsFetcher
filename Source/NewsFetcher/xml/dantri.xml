@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<_1241350_1241363_1241378_1241431>
+	<website>Dân trí</website>
+	<url>http://dantri.com.vn</url>
+	<category count="1">
+		<item id="1" name="Xã hội" url="http://dantri.com.vn/xa-hoi.htm">
+			<xpathlayout>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div</xpathlayout>
+			<link>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div[3]/div/h2/a/@href</link>
+			<title>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div[3]/div/h2/a</title>
+			<image>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div[3]/a/img/@src</image>
+			<date></date>
+			<description>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div[3]/div/div/text()</description>
+			<nextpage>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div[27]/div[2]/a</nextpage>
+			<xpathnextpage>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div[27]/div[2]</xpathnextpage>
+		</item>
+		<item id="2" name="Thể thao" url="http://dantri.com.vn/the-thao.htm">
+			<xpathlayout>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div</xpathlayout>
+			<link>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div[3]/div/h2/a/@href</link>
+			<title>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div[3]/div/h2/a</title>
+			<image>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div[3]/a/img/@src</image>
+			<date></date>
+			<description>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div[3]/div/div/text()</description>
+			<nextpage>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div[27]/div[2]/a</nextpage>
+			<xpathnextpage>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div[27]/div[2]</xpathnextpage>
+		</item>
+		<item id="3" name="Giáo dục khuyến học" url="http://dantri.com.vn/giao-duc-khuyen-hoc.htm">
+			<xpathlayout>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div</xpathlayout>
+			<link>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div[3]/div/h2/a/@href</link>
+			<title>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div[3]/div/h2/a</title>
+			<image>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div[3]/a/img/@src</image>
+			<date></date>
+			<description>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div[3]/div/div/text()</description>
+			<nextpage>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div[27]/div[2]/a</nextpage>
+			<xpathnextpage>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div[27]/div[2]</xpathnextpage>
+		</item>
+		<item id="4" name="Kinh doanh" url="http://dantri.com.vn/kinh-doanh.htm">
+			<xpathlayout>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div</xpathlayout>
+			<link>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div[3]/div/h2/a/@href</link>
+			<title>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div[3]/div/h2/a</title>
+			<image>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div[3]/a/img/@src</image>
+			<date></date>
+			<description>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div[3]/div/div/text()</description>
+			<nextpage>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div[27]/div[2]/a</nextpage>
+			<xpathnextpage>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div[27]/div[2]</xpathnextpage>
+		</item>
+		<item id="5" name="Văn hoá" url="http://dantri.com.vn/van-hoa.htm">
+			<xpathlayout>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div</xpathlayout>
+			<link>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div[3]/div/h2/a/@href</link>
+			<title>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div[3]/div/h2/a</title>
+			<image>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div[3]/a/img/@src</image>
+			<date></date>
+			<description>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div[3]/div/div/text()</description>
+			<nextpage>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div[27]/div[2]/a</nextpage>
+			<xpathnextpage>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div[27]/div[2]</xpathnextpage>
+		</item>
+		<item id="6" name="Tình yêu giới tính" url="http://dantri.com.vn/tinh-yeu-gioi-tinh.htm">
+			<xpathlayout>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div</xpathlayout>
+			<link>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div[3]/div/h2/a/@href</link>
+			<title>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div[3]/div/h2/a</title>
+			<image>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div[3]/a/img/@src</image>
+			<date></date>
+			<description>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div[3]/div/div/text()</description>
+			<nextpage>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div[27]/div[2]/a</nextpage>
+			<xpathnextpage>//*[@id="aspnetForm"]/div[6]/div/div[1]/div[1]/div[27]/div[2]</xpathnextpage>
+		</item>
+	</category>
+</_1241350_1241363_1241378_1241431>
